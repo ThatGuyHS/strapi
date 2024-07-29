@@ -68,6 +68,9 @@
     },
     "publishmonth": {
       "type": "string"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }

@@ -385,6 +385,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     section_2_image: Attribute.Media;
     section_2_image_text: Attribute.Text;
     publishmonth: Attribute.String;
+    slug: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
