@@ -832,6 +832,41 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
 }
 
+export interface ApiCalendareventCalendarevent extends Schema.CollectionType {
+  collectionName: 'calendarevents';
+  info: {
+    singularName: 'calendarevent';
+    pluralName: 'calendarevents';
+    displayName: 'Calendarevent';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    date: Attribute.DateTime;
+    title: Attribute.String;
+    description: Attribute.String;
+    link: Attribute.String;
+    thumbnail: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::calendarevent.calendarevent',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::calendarevent.calendarevent',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGameTitleGameTitle extends Schema.CollectionType {
   collectionName: 'game_titles';
   info: {
@@ -898,6 +933,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::article.article': ApiArticleArticle;
+      'api::calendarevent.calendarevent': ApiCalendareventCalendarevent;
       'api::game-title.game-title': ApiGameTitleGameTitle;
     }
   }
