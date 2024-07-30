@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "game_titles",
+  "info": {
+    "singularName": "game-title",
+    "pluralName": "game-titles",
+    "displayName": "Game Title"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "thumbnailText": {
+      "type": "string"
+    },
+    "section_1_title": {
+      "type": "string"
+    },
+    "section_1_text": {
+      "type": "text"
+    },
+    "section_1_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "section_2_title": {
+      "type": "string"
+    },
+    "section_2_text": {
+      "type": "text"
+    },
+    "section_2_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "section_2_image_text": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}
