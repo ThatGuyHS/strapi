@@ -362,6 +362,95 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    thumbnail: Attribute.Media;
+    thumbnailText: Attribute.String;
+    section_1_title: Attribute.String;
+    section_1_text: Attribute.Text;
+    section_1_image: Attribute.Media;
+    section_2_title: Attribute.String;
+    section_2_text: Attribute.Text;
+    section_2_image: Attribute.Media;
+    section_2_image_text: Attribute.Text;
+    publishmonth: Attribute.String;
+    slug: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGameTitleGameTitle extends Schema.CollectionType {
+  collectionName: 'game_titles';
+  info: {
+    singularName: 'game-title';
+    pluralName: 'game-titles';
+    displayName: 'Game Title';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    thumbnail: Attribute.Media;
+    thumbnailText: Attribute.String;
+    section_1_title: Attribute.String;
+    section_1_text: Attribute.Text;
+    section_1_image: Attribute.Media;
+    section_2_title: Attribute.String;
+    section_2_text: Attribute.Text;
+    section_2_image: Attribute.Media;
+    section_2_image_text: Attribute.Text;
+    slug: Attribute.String;
+    ruleset_1_title: Attribute.String;
+    ruleset_1_link: Attribute.String;
+    ruleset_2_title: Attribute.String;
+    ruleset_3_title: Attribute.String;
+    ruleset_3_link: Attribute.String;
+    ruleset_2_link: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::game-title.game-title',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::game-title.game-title',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -788,88 +877,6 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.CollectionType {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'Article';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    thumbnail: Attribute.Media;
-    thumbnailText: Attribute.String;
-    section_1_title: Attribute.String;
-    section_1_text: Attribute.Text;
-    section_1_image: Attribute.Media;
-    section_2_title: Attribute.String;
-    section_2_text: Attribute.Text;
-    section_2_image: Attribute.Media;
-    section_2_image_text: Attribute.Text;
-    publishmonth: Attribute.String;
-    slug: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiGameTitleGameTitle extends Schema.CollectionType {
-  collectionName: 'game_titles';
-  info: {
-    singularName: 'game-title';
-    pluralName: 'game-titles';
-    displayName: 'Game Title';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    thumbnail: Attribute.Media;
-    thumbnailText: Attribute.String;
-    section_1_title: Attribute.String;
-    section_1_text: Attribute.Text;
-    section_1_image: Attribute.Media;
-    section_2_title: Attribute.String;
-    section_2_text: Attribute.Text;
-    section_2_image: Attribute.Media;
-    section_2_image_text: Attribute.Text;
-    slug: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::game-title.game-title',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::game-title.game-title',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -880,6 +887,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::article.article': ApiArticleArticle;
+      'api::game-title.game-title': ApiGameTitleGameTitle;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -888,8 +897,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::article.article': ApiArticleArticle;
-      'api::game-title.game-title': ApiGameTitleGameTitle;
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "game-title",
     "pluralName": "game-titles",
-    "displayName": "Game Title"
+    "displayName": "Game Title",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,14 +16,15 @@
       "type": "string"
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "thumbnailText": {
       "type": "string"
@@ -34,14 +36,15 @@
       "type": "text"
     },
     "section_1_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "section_2_title": {
       "type": "string"
@@ -50,19 +53,38 @@
       "type": "text"
     },
     "section_2_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "section_2_image_text": {
       "type": "text"
     },
     "slug": {
+      "type": "string"
+    },
+    "ruleset_1_title": {
+      "type": "string"
+    },
+    "ruleset_1_link": {
+      "type": "string"
+    },
+    "ruleset_2_title": {
+      "type": "string"
+    },
+    "ruleset_3_title": {
+      "type": "string"
+    },
+    "ruleset_3_link": {
+      "type": "string"
+    },
+    "ruleset_2_link": {
       "type": "string"
     }
   }
