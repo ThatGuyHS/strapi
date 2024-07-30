@@ -813,6 +813,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     publishmonth: Attribute.String;
     slug: Attribute.String;
     isProjectArticle: Attribute.Boolean;
+    weight: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

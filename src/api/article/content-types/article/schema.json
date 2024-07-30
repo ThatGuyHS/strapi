@@ -74,6 +74,9 @@
     },
     "isProjectArticle": {
       "type": "boolean"
+    },
+    "weight": {
+      "type": "integer"
     }
   }
 }
