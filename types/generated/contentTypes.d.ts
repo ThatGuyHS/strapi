@@ -867,6 +867,39 @@ export interface ApiCalendareventCalendarevent extends Schema.CollectionType {
   };
 }
 
+export interface ApiForeningForening extends Schema.CollectionType {
+  collectionName: 'forenings';
+  info: {
+    singularName: 'forening';
+    pluralName: 'forenings';
+    displayName: 'forening';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.Text;
+    websitelink: Attribute.String;
+    thumbnail: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::forening.forening',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::forening.forening',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGameTitleGameTitle extends Schema.CollectionType {
   collectionName: 'game_titles';
   info: {
@@ -934,6 +967,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::article.article': ApiArticleArticle;
       'api::calendarevent.calendarevent': ApiCalendareventCalendarevent;
+      'api::forening.forening': ApiForeningForening;
       'api::game-title.game-title': ApiGameTitleGameTitle;
     }
   }
