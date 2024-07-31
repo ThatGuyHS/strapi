@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "national_teams",
+  "info": {
+    "singularName": "national-team",
+    "pluralName": "national-teams",
+    "displayName": "National Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "player": {
+      "displayName": "player",
+      "type": "component",
+      "repeatable": false,
+      "component": "players.player"
+    },
+    "teamimage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
