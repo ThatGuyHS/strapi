@@ -4,12 +4,14 @@ export interface PlayersPlayer extends Schema.Component {
   collectionName: 'components_players_players';
   info: {
     displayName: 'player';
+    description: '';
   };
   attributes: {
-    name: Attribute.String;
+    firstname: Attribute.String;
     role: Attribute.String;
     nickname: Attribute.String;
     image: Attribute.Media;
+    lastname: Attribute.String;
   };
 }
 
