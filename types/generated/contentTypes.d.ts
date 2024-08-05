@@ -986,6 +986,45 @@ export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
   };
 }
 
+export interface ApiPlayerPlayer extends Schema.CollectionType {
+  collectionName: 'players';
+  info: {
+    singularName: 'player';
+    pluralName: 'players';
+    displayName: 'Player';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    firstname: Attribute.String;
+    nickname: Attribute.String;
+    lastname: Attribute.String;
+    game: Attribute.String;
+    age: Attribute.String;
+    rank: Attribute.String;
+    city: Attribute.String;
+    biography: Attribute.Text;
+    photo: Attribute.Media;
+    headerimage: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::player.player',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::player.player',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1009,6 +1048,7 @@ declare module '@strapi/types' {
       'api::forening.forening': ApiForeningForening;
       'api::game-title.game-title': ApiGameTitleGameTitle;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
+      'api::player.player': ApiPlayerPlayer;
     }
   }
 }
