@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_kansli_members",
+  "info": {
+    "displayName": "Member"
+  },
+  "options": {},
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "profilepicture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

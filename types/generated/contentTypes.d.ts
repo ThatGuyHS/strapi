@@ -867,6 +867,44 @@ export interface ApiCalendareventCalendarevent extends Schema.CollectionType {
   };
 }
 
+export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
+  collectionName: 'forbundetinfos';
+  info: {
+    singularName: 'forbundetinfo';
+    pluralName: 'forbundetinfos';
+    displayName: 'forbundetinfo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    headerimage: Attribute.Media;
+    title: Attribute.String;
+    section1_text: Attribute.Text;
+    section_2_title: Attribute.String;
+    section_2_image: Attribute.Media;
+    section_2_text: Attribute.Text;
+    kansliet_title: Attribute.String;
+    kanslimember: Attribute.Component<'kansli.member', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::forbundetinfo.forbundetinfo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::forbundetinfo.forbundetinfo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiForeningForening extends Schema.CollectionType {
   collectionName: 'forenings';
   info: {
@@ -1045,6 +1083,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::article.article': ApiArticleArticle;
       'api::calendarevent.calendarevent': ApiCalendareventCalendarevent;
+      'api::forbundetinfo.forbundetinfo': ApiForbundetinfoForbundetinfo;
       'api::forening.forening': ApiForeningForening;
       'api::game-title.game-title': ApiGameTitleGameTitle;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;

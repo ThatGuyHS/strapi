@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forbundetinfos",
+  "info": {
+    "singularName": "forbundetinfo",
+    "pluralName": "forbundetinfos",
+    "displayName": "forbundetinfo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "headerimage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "section1_text": {
+      "type": "text"
+    },
+    "section_2_title": {
+      "type": "string"
+    },
+    "section_2_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "section_2_text": {
+      "type": "text"
+    },
+    "kansliet_title": {
+      "type": "string"
+    },
+    "kanslimember": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kansli.member"
+    }
+  }
+}
