@@ -953,6 +953,7 @@ export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
     singularName: 'national-team';
     pluralName: 'national-teams';
     displayName: 'National Team';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -962,6 +963,11 @@ export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
     description: Attribute.Text;
     player: Attribute.Component<'players.player'>;
     teamimage: Attribute.Media;
+    player2: Attribute.Component<'players.player', true>;
+    player3: Attribute.Component<'players.player', true>;
+    player4: Attribute.Component<'players.player', true>;
+    player5: Attribute.Component<'players.player', true>;
+    coach: Attribute.Component<'players.player', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

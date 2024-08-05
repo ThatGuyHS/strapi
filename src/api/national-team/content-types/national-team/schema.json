@@ -4,7 +4,8 @@
   "info": {
     "singularName": "national-team",
     "pluralName": "national-teams",
-    "displayName": "National Team"
+    "displayName": "National Team",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,14 +25,40 @@
       "component": "players.player"
     },
     "teamimage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "player2": {
+      "type": "component",
+      "repeatable": true,
+      "component": "players.player"
+    },
+    "player3": {
+      "type": "component",
+      "repeatable": true,
+      "component": "players.player"
+    },
+    "player4": {
+      "type": "component",
+      "repeatable": true,
+      "component": "players.player"
+    },
+    "player5": {
+      "type": "component",
+      "repeatable": true,
+      "component": "players.player"
+    },
+    "coach": {
+      "type": "component",
+      "repeatable": true,
+      "component": "players.player"
     }
   }
 }
