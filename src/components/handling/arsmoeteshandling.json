@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_handling_arsmoeteshandlings",
+  "info": {
+    "displayName": "arsmöteshandling"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

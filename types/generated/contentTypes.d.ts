@@ -887,6 +887,12 @@ export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
     section_2_text: Attribute.Text;
     kansliet_title: Attribute.String;
     kanslimember: Attribute.Component<'kansli.member', true>;
+    styrelsemember: Attribute.Component<'kansli.member', true>;
+    arsmotehandling: Attribute.Component<'handling.arsmoeteshandling', true>;
+    styrelsemoteprotokoll: Attribute.Component<
+      'handling.arsmoeteshandling',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

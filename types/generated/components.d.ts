@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface HandlingArsmoeteshandling extends Schema.Component {
+  collectionName: 'components_handling_arsmoeteshandlings';
+  info: {
+    displayName: 'arsm\u00F6teshandling';
+  };
+  attributes: {
+    name: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface KansliMember extends Schema.Component {
   collectionName: 'components_kansli_members';
   info: {
@@ -31,6 +42,7 @@ export interface PlayersPlayer extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'handling.arsmoeteshandling': HandlingArsmoeteshandling;
       'kansli.member': KansliMember;
       'players.player': PlayersPlayer;
     }

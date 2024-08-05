@@ -53,6 +53,21 @@
       "type": "component",
       "repeatable": true,
       "component": "kansli.member"
+    },
+    "styrelsemember": {
+      "type": "component",
+      "repeatable": true,
+      "component": "kansli.member"
+    },
+    "arsmotehandling": {
+      "type": "component",
+      "repeatable": true,
+      "component": "handling.arsmoeteshandling"
+    },
+    "styrelsemoteprotokoll": {
+      "type": "component",
+      "repeatable": true,
+      "component": "handling.arsmoeteshandling"
     }
   }
 }
