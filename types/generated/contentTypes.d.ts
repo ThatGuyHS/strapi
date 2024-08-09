@@ -1110,6 +1110,46 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
   };
 }
 
+export interface ApiWhyBecomeMemberWhyBecomeMember
+  extends Schema.CollectionType {
+  collectionName: 'why_become_members';
+  info: {
+    singularName: 'why-become-member';
+    pluralName: 'why-become-members';
+    displayName: 'WhyBecomeMember';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    headerimage: Attribute.Media;
+    section_1_title: Attribute.String;
+    section_1_text: Attribute.Blocks;
+    section_2_title: Attribute.String;
+    section_2_image: Attribute.Media;
+    section_2_text: Attribute.Blocks;
+    section_3_title: Attribute.String;
+    section_3_text: Attribute.Blocks;
+    section_3_image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::why-become-member.why-become-member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::why-become-member.why-become-member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1136,6 +1176,7 @@ declare module '@strapi/types' {
       'api::how-become-member.how-become-member': ApiHowBecomeMemberHowBecomeMember;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
       'api::player.player': ApiPlayerPlayer;
+      'api::why-become-member.why-become-member': ApiWhyBecomeMemberWhyBecomeMember;
     }
   }
 }
