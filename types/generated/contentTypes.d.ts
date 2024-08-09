@@ -991,6 +991,46 @@ export interface ApiGameTitleGameTitle extends Schema.CollectionType {
   };
 }
 
+export interface ApiHowBecomeMemberHowBecomeMember
+  extends Schema.CollectionType {
+  collectionName: 'how_become_members';
+  info: {
+    singularName: 'how-become-member';
+    pluralName: 'how-become-members';
+    displayName: 'HowBecomeMember';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    headerimage: Attribute.Media;
+    section_1_title: Attribute.String;
+    section_1_text: Attribute.Blocks;
+    section_2_title: Attribute.String;
+    section_2_image: Attribute.Media;
+    section_2_text: Attribute.Blocks;
+    section_3_title: Attribute.String;
+    section_3_text: Attribute.Blocks;
+    section_3_image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::how-become-member.how-become-member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::how-become-member.how-become-member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
   collectionName: 'national_teams';
   info: {
@@ -1093,6 +1133,7 @@ declare module '@strapi/types' {
       'api::forbundetinfo.forbundetinfo': ApiForbundetinfoForbundetinfo;
       'api::forening.forening': ApiForeningForening;
       'api::game-title.game-title': ApiGameTitleGameTitle;
+      'api::how-become-member.how-become-member': ApiHowBecomeMemberHowBecomeMember;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
       'api::player.player': ApiPlayerPlayer;
     }
