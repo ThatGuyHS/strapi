@@ -24,6 +24,19 @@ export interface KansliMember extends Schema.Component {
   };
 }
 
+export interface LandslagResultatResultat extends Schema.Component {
+  collectionName: 'components_landslag_resultat_resultats';
+  info: {
+    displayName: 'resultat';
+  };
+  attributes: {
+    match: Attribute.String;
+    score: Attribute.String;
+    resultlink: Attribute.String;
+    image: Attribute.Media;
+  };
+}
+
 export interface PlayersPlayer extends Schema.Component {
   collectionName: 'components_players_players';
   info: {
@@ -44,6 +57,7 @@ declare module '@strapi/types' {
     export interface Components {
       'handling.arsmoeteshandling': HandlingArsmoeteshandling;
       'kansli.member': KansliMember;
+      'landslag-resultat.resultat': LandslagResultatResultat;
       'players.player': PlayersPlayer;
     }
   }
