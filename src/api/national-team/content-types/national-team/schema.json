@@ -59,6 +59,11 @@
       "type": "component",
       "repeatable": true,
       "component": "players.player"
+    },
+    "resultat": {
+      "type": "component",
+      "repeatable": true,
+      "component": "landslag-resultat.resultat"
     }
   }
 }

@@ -1012,6 +1012,7 @@ export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
     player4: Attribute.Component<'players.player', true>;
     player5: Attribute.Component<'players.player', true>;
     coach: Attribute.Component<'players.player', true>;
+    resultat: Attribute.Component<'landslag-resultat.resultat', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
