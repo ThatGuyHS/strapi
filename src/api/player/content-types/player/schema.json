@@ -4,56 +4,59 @@
   "info": {
     "singularName": "player",
     "pluralName": "players",
-    "displayName": "Player"
+    "displayName": "/landslagen - spelare",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "firstname": {
+    "fornamn": {
       "type": "string"
     },
-    "nickname": {
+    "smeknamn": {
       "type": "string"
     },
-    "lastname": {
+    "efternamn": {
       "type": "string"
     },
-    "game": {
+    "spel": {
       "type": "string"
     },
-    "age": {
+    "alder": {
       "type": "string"
     },
     "rank": {
       "type": "string"
     },
-    "city": {
+    "stad": {
       "type": "string"
     },
-    "biography": {
+    "biografi": {
       "type": "text"
     },
-    "photo": {
+    "bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "headerimage": {
+    "headerbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

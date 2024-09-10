@@ -4,7 +4,7 @@
   "info": {
     "singularName": "national-team",
     "pluralName": "national-teams",
-    "displayName": "National Team",
+    "displayName": "/landslagen",
     "description": ""
   },
   "options": {
@@ -12,19 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "namn": {
       "type": "string"
     },
-    "description": {
+    "beskrivning": {
       "type": "text"
     },
-    "player": {
+    "spelare": {
       "displayName": "player",
       "type": "component",
       "repeatable": false,
       "component": "players.player"
     },
-    "teamimage": {
+    "lagbild": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -35,22 +35,22 @@
         "audios"
       ]
     },
-    "player2": {
+    "spelare2": {
       "type": "component",
       "repeatable": true,
       "component": "players.player"
     },
-    "player3": {
+    "spelare3": {
       "type": "component",
       "repeatable": true,
       "component": "players.player"
     },
-    "player4": {
+    "spelare4": {
       "type": "component",
       "repeatable": true,
       "component": "players.player"
     },
-    "player5": {
+    "spelare5": {
       "type": "component",
       "repeatable": true,
       "component": "players.player"

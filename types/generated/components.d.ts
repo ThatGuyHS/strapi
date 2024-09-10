@@ -4,9 +4,10 @@ export interface HandlingArsmoeteshandling extends Schema.Component {
   collectionName: 'components_handling_arsmoeteshandlings';
   info: {
     displayName: 'arsm\u00F6teshandling';
+    description: '';
   };
   attributes: {
-    name: Attribute.String;
+    namn: Attribute.String;
     link: Attribute.String;
   };
 }
@@ -15,12 +16,13 @@ export interface KansliMember extends Schema.Component {
   collectionName: 'components_kansli_members';
   info: {
     displayName: 'Member';
+    description: '';
   };
   attributes: {
-    firstname: Attribute.String;
-    lastname: Attribute.String;
-    role: Attribute.String;
-    profilepicture: Attribute.Media;
+    fornamn: Attribute.String;
+    efternamn: Attribute.String;
+    roll: Attribute.String;
+    profilbild: Attribute.Media;
   };
 }
 
@@ -28,12 +30,13 @@ export interface LandslagResultatResultat extends Schema.Component {
   collectionName: 'components_landslag_resultat_resultats';
   info: {
     displayName: 'resultat';
+    description: '';
   };
   attributes: {
     match: Attribute.String;
-    score: Attribute.String;
+    resultat: Attribute.String;
     resultlink: Attribute.String;
-    image: Attribute.Media;
+    bild: Attribute.Media;
   };
 }
 
@@ -44,11 +47,11 @@ export interface PlayersPlayer extends Schema.Component {
     description: '';
   };
   attributes: {
-    firstname: Attribute.String;
-    role: Attribute.String;
-    nickname: Attribute.String;
-    image: Attribute.Media;
-    lastname: Attribute.String;
+    fornamn: Attribute.String;
+    roll: Attribute.String;
+    smeknamn: Attribute.String;
+    bild: Attribute.Media;
+    efternamn: Attribute.String;
   };
 }
 

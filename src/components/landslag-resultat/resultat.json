@@ -1,28 +1,30 @@
 {
   "collectionName": "components_landslag_resultat_resultats",
   "info": {
-    "displayName": "resultat"
+    "displayName": "resultat",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "match": {
       "type": "string"
     },
-    "score": {
+    "resultat": {
       "type": "string"
     },
     "resultlink": {
       "type": "string"
     },
-    "image": {
+    "bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

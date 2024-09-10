@@ -4,7 +4,7 @@
   "info": {
     "singularName": "forbundetinfo",
     "pluralName": "forbundetinfos",
-    "displayName": "forbundetinfo",
+    "displayName": "/forbundet",
     "description": ""
   },
   "options": {
@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "headerimage": {
+    "headerbild": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -23,16 +23,16 @@
         "audios"
       ]
     },
-    "title": {
+    "titel": {
       "type": "string"
     },
-    "section1_text": {
+    "sektion1_text": {
       "type": "text"
     },
-    "section_2_title": {
+    "sektion_2_titel": {
       "type": "string"
     },
-    "section_2_image": {
+    "sektion_2_bild": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -43,18 +43,18 @@
         "audios"
       ]
     },
-    "section_2_text": {
+    "sektion_2_text": {
       "type": "text"
     },
-    "kansliet_title": {
+    "kansliet_titel": {
       "type": "string"
     },
-    "kanslimember": {
+    "kanslimedlem": {
       "type": "component",
       "repeatable": true,
       "component": "kansli.member"
     },
-    "styrelsemember": {
+    "styrelsemedlem": {
       "type": "component",
       "repeatable": true,
       "component": "kansli.member"

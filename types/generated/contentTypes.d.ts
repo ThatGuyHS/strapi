@@ -793,27 +793,27 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   info: {
     singularName: 'article';
     pluralName: 'articles';
-    displayName: 'Article';
+    displayName: '/nyheter & /projekt';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    titel: Attribute.String;
     thumbnail: Attribute.Media;
     thumbnailText: Attribute.String;
-    section_1_title: Attribute.String;
-    section_1_text: Attribute.Text;
-    section_1_image: Attribute.Media;
-    section_2_title: Attribute.String;
-    section_2_text: Attribute.Text;
-    section_2_image: Attribute.Media;
-    section_2_image_text: Attribute.Text;
-    publishmonth: Attribute.String;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Text;
+    sektion_1_bild: Attribute.Media;
+    sektion_2_titel: Attribute.String;
+    sektion_2_text: Attribute.Text;
+    sektion_2_bild: Attribute.Media;
+    sektion_2_bild_text: Attribute.Text;
+    publiceringsmanad: Attribute.String;
     slug: Attribute.String;
-    isProjectArticle: Attribute.Boolean;
-    weight: Attribute.Integer;
+    projektArtikel: Attribute.Boolean;
+    vikt: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -837,16 +837,16 @@ export interface ApiCalendareventCalendarevent extends Schema.CollectionType {
   info: {
     singularName: 'calendarevent';
     pluralName: 'calendarevents';
-    displayName: 'Calendarevent';
+    displayName: '/kalender';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    date: Attribute.DateTime;
-    title: Attribute.String;
-    description: Attribute.String;
+    datum: Attribute.DateTime;
+    titel: Attribute.String;
+    beskrivning: Attribute.String;
     link: Attribute.String;
     thumbnail: Attribute.Media;
     createdAt: Attribute.DateTime;
@@ -872,22 +872,22 @@ export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
   info: {
     singularName: 'forbundetinfo';
     pluralName: 'forbundetinfos';
-    displayName: 'forbundetinfo';
+    displayName: '/forbundet';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    headerimage: Attribute.Media;
-    title: Attribute.String;
-    section1_text: Attribute.Text;
-    section_2_title: Attribute.String;
-    section_2_image: Attribute.Media;
-    section_2_text: Attribute.Text;
-    kansliet_title: Attribute.String;
-    kanslimember: Attribute.Component<'kansli.member', true>;
-    styrelsemember: Attribute.Component<'kansli.member', true>;
+    headerbild: Attribute.Media;
+    titel: Attribute.String;
+    sektion1_text: Attribute.Text;
+    sektion_2_titel: Attribute.String;
+    sektion_2_bild: Attribute.Media;
+    sektion_2_text: Attribute.Text;
+    kansliet_titel: Attribute.String;
+    kanslimedlem: Attribute.Component<'kansli.member', true>;
+    styrelsemedlem: Attribute.Component<'kansli.member', true>;
     arsmotehandling: Attribute.Component<'handling.arsmoeteshandling', true>;
     styrelsemoteprotokoll: Attribute.Component<
       'handling.arsmoeteshandling',
@@ -916,15 +916,16 @@ export interface ApiForeningForening extends Schema.CollectionType {
   info: {
     singularName: 'forening';
     pluralName: 'forenings';
-    displayName: 'forening';
+    displayName: '/foreningar';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    description: Attribute.Text;
-    websitelink: Attribute.String;
+    namn: Attribute.String;
+    beskrivning: Attribute.Text;
+    webbsidelank: Attribute.String;
     thumbnail: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -949,33 +950,32 @@ export interface ApiGameTitleGameTitle extends Schema.CollectionType {
   info: {
     singularName: 'game-title';
     pluralName: 'game-titles';
-    displayName: 'Game Title';
+    displayName: '/esport/grentitlar';
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
-    title: Attribute.String;
+    titel: Attribute.String;
     thumbnail: Attribute.Media;
     thumbnailText: Attribute.String;
-    section_1_title: Attribute.String;
-    section_1_text: Attribute.Text;
-    section_1_image: Attribute.Media;
-    section_2_title: Attribute.String;
-    section_2_text: Attribute.Text;
-    section_2_image: Attribute.Media;
-    section_2_image_text: Attribute.Text;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Text;
+    sektion_1_bild: Attribute.Media;
+    sektion_2_titel: Attribute.String;
+    sektion_2_text: Attribute.Text;
+    sektion_2_bild: Attribute.Media;
+    section_2_bild_text: Attribute.Text;
     slug: Attribute.String;
-    ruleset_1_title: Attribute.String;
-    ruleset_1_link: Attribute.String;
-    ruleset_2_title: Attribute.String;
-    ruleset_3_title: Attribute.String;
-    ruleset_3_link: Attribute.String;
-    ruleset_2_link: Attribute.String;
+    regelverk_2_titel: Attribute.String;
+    regelverk_1_link: Attribute.String;
+    regelverk_1_titel: Attribute.String;
+    regelverk_3_titel: Attribute.String;
+    regelverk_3_link: Attribute.String;
+    regelverk_2_link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::game-title.game-title',
       'oneToOne',
@@ -997,22 +997,23 @@ export interface ApiHowBecomeMemberHowBecomeMember
   info: {
     singularName: 'how-become-member';
     pluralName: 'how-become-members';
-    displayName: 'HowBecomeMember';
+    displayName: '/hur-bli-medlem';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     titel: Attribute.String;
-    headerimage: Attribute.Media;
-    section_1_title: Attribute.String;
-    section_1_text: Attribute.Blocks;
-    section_2_title: Attribute.String;
-    section_2_image: Attribute.Media;
-    section_2_text: Attribute.Blocks;
-    section_3_title: Attribute.String;
-    section_3_text: Attribute.Blocks;
-    section_3_image: Attribute.Media;
+    headerbild: Attribute.Media;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Blocks;
+    sektion_2_titel: Attribute.String;
+    sektion_2_bild: Attribute.Media;
+    sektion_2_text: Attribute.Blocks;
+    sektion_3_titel: Attribute.String;
+    sektion_3_text: Attribute.Blocks;
+    sektion_3_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1036,21 +1037,21 @@ export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
   info: {
     singularName: 'national-team';
     pluralName: 'national-teams';
-    displayName: 'National Team';
+    displayName: '/landslagen';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Name: Attribute.String;
-    description: Attribute.Text;
-    player: Attribute.Component<'players.player'>;
-    teamimage: Attribute.Media;
-    player2: Attribute.Component<'players.player', true>;
-    player3: Attribute.Component<'players.player', true>;
-    player4: Attribute.Component<'players.player', true>;
-    player5: Attribute.Component<'players.player', true>;
+    namn: Attribute.String;
+    beskrivning: Attribute.Text;
+    spelare: Attribute.Component<'players.player'>;
+    lagbild: Attribute.Media;
+    spelare2: Attribute.Component<'players.player', true>;
+    spelare3: Attribute.Component<'players.player', true>;
+    spelare4: Attribute.Component<'players.player', true>;
+    spelare5: Attribute.Component<'players.player', true>;
     coach: Attribute.Component<'players.player', true>;
     resultat: Attribute.Component<'landslag-resultat.resultat', true>;
     createdAt: Attribute.DateTime;
@@ -1076,22 +1077,23 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
   info: {
     singularName: 'player';
     pluralName: 'players';
-    displayName: 'Player';
+    displayName: '/landslagen - spelare';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    firstname: Attribute.String;
-    nickname: Attribute.String;
-    lastname: Attribute.String;
-    game: Attribute.String;
-    age: Attribute.String;
+    fornamn: Attribute.String;
+    smeknamn: Attribute.String;
+    efternamn: Attribute.String;
+    spel: Attribute.String;
+    alder: Attribute.String;
     rank: Attribute.String;
-    city: Attribute.String;
-    biography: Attribute.Text;
-    photo: Attribute.Media;
-    headerimage: Attribute.Media;
+    stad: Attribute.String;
+    biografi: Attribute.Text;
+    bild: Attribute.Media;
+    headerbild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1116,22 +1118,23 @@ export interface ApiWhyBecomeMemberWhyBecomeMember
   info: {
     singularName: 'why-become-member';
     pluralName: 'why-become-members';
-    displayName: 'WhyBecomeMember';
+    displayName: '/varfor-bli-medlem';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     titel: Attribute.String;
-    headerimage: Attribute.Media;
-    section_1_title: Attribute.String;
-    section_1_text: Attribute.Blocks;
-    section_2_title: Attribute.String;
-    section_2_image: Attribute.Media;
-    section_2_text: Attribute.Blocks;
-    section_3_title: Attribute.String;
-    section_3_text: Attribute.Blocks;
-    section_3_image: Attribute.Media;
+    headerbild: Attribute.Media;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Blocks;
+    sektion_2_titel: Attribute.String;
+    sektion_2_bild: Attribute.Media;
+    sektion_2_text: Attribute.Blocks;
+    sektion_3_titel: Attribute.String;
+    sektion_3_text: Attribute.Blocks;
+    sektion_3_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

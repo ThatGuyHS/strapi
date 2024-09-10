@@ -4,7 +4,7 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "Article",
+    "displayName": "/nyheter & /projekt",
     "description": ""
   },
   "options": {
@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "titel": {
       "type": "string"
     },
     "thumbnail": {
@@ -29,13 +29,13 @@
     "thumbnailText": {
       "type": "string"
     },
-    "section_1_title": {
+    "sektion_1_titel": {
       "type": "string"
     },
-    "section_1_text": {
+    "sektion_1_text": {
       "type": "text"
     },
-    "section_1_image": {
+    "sektion_1_bild": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -46,13 +46,13 @@
         "audios"
       ]
     },
-    "section_2_title": {
+    "sektion_2_titel": {
       "type": "string"
     },
-    "section_2_text": {
+    "sektion_2_text": {
       "type": "text"
     },
-    "section_2_image": {
+    "sektion_2_bild": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -63,19 +63,19 @@
         "audios"
       ]
     },
-    "section_2_image_text": {
+    "sektion_2_bild_text": {
       "type": "text"
     },
-    "publishmonth": {
+    "publiceringsmanad": {
       "type": "string"
     },
     "slug": {
       "type": "string"
     },
-    "isProjectArticle": {
+    "projektArtikel": {
       "type": "boolean"
     },
-    "weight": {
+    "vikt": {
       "type": "integer"
     }
   }

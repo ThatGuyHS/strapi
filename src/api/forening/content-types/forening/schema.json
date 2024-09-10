@@ -4,31 +4,33 @@
   "info": {
     "singularName": "forening",
     "pluralName": "forenings",
-    "displayName": "forening"
+    "displayName": "/foreningar",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "namn": {
       "type": "string"
     },
-    "description": {
+    "beskrivning": {
       "type": "text"
     },
-    "websitelink": {
+    "webbsidelank": {
       "type": "string"
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

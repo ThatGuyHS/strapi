@@ -4,15 +4,15 @@
   "info": {
     "singularName": "game-title",
     "pluralName": "game-titles",
-    "displayName": "Game Title",
+    "displayName": "/esport/grentitlar",
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "titel": {
       "type": "string"
     },
     "thumbnail": {
@@ -29,13 +29,13 @@
     "thumbnailText": {
       "type": "string"
     },
-    "section_1_title": {
+    "sektion_1_titel": {
       "type": "string"
     },
-    "section_1_text": {
+    "sektion_1_text": {
       "type": "text"
     },
-    "section_1_image": {
+    "sektion_1_bild": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -46,13 +46,13 @@
         "audios"
       ]
     },
-    "section_2_title": {
+    "sektion_2_titel": {
       "type": "string"
     },
-    "section_2_text": {
+    "sektion_2_text": {
       "type": "text"
     },
-    "section_2_image": {
+    "sektion_2_bild": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -63,28 +63,28 @@
         "audios"
       ]
     },
-    "section_2_image_text": {
+    "section_2_bild_text": {
       "type": "text"
     },
     "slug": {
       "type": "string"
     },
-    "ruleset_1_title": {
+    "regelverk_2_titel": {
       "type": "string"
     },
-    "ruleset_1_link": {
+    "regelverk_1_link": {
       "type": "string"
     },
-    "ruleset_2_title": {
+    "regelverk_1_titel": {
       "type": "string"
     },
-    "ruleset_3_title": {
+    "regelverk_3_titel": {
       "type": "string"
     },
-    "ruleset_3_link": {
+    "regelverk_3_link": {
       "type": "string"
     },
-    "ruleset_2_link": {
+    "regelverk_2_link": {
       "type": "string"
     }
   }

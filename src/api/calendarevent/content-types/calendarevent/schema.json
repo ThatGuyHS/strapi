@@ -4,7 +4,7 @@
   "info": {
     "singularName": "calendarevent",
     "pluralName": "calendarevents",
-    "displayName": "Calendarevent",
+    "displayName": "/kalender",
     "description": ""
   },
   "options": {
@@ -12,27 +12,28 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "date": {
+    "datum": {
       "type": "datetime"
     },
-    "title": {
+    "titel": {
       "type": "string"
     },
-    "description": {
+    "beskrivning": {
       "type": "string"
     },
     "link": {
       "type": "string"
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

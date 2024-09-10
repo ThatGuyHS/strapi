@@ -4,7 +4,8 @@
   "info": {
     "singularName": "why-become-member",
     "pluralName": "why-become-members",
-    "displayName": "WhyBecomeMember"
+    "displayName": "/varfor-bli-medlem",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,53 +15,56 @@
     "titel": {
       "type": "string"
     },
-    "headerimage": {
+    "headerbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "section_1_title": {
+    "sektion_1_titel": {
       "type": "string"
     },
-    "section_1_text": {
+    "sektion_1_text": {
       "type": "blocks"
     },
-    "section_2_title": {
+    "sektion_2_titel": {
       "type": "string"
     },
-    "section_2_image": {
+    "sektion_2_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "section_2_text": {
+    "sektion_2_text": {
       "type": "blocks"
     },
-    "section_3_title": {
+    "sektion_3_titel": {
       "type": "string"
     },
-    "section_3_text": {
+    "sektion_3_text": {
       "type": "blocks"
     },
-    "section_3_image": {
+    "sektion_3_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }
