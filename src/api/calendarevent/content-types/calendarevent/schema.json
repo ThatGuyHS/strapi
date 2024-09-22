@@ -19,7 +19,7 @@
       "type": "string"
     },
     "beskrivning": {
-      "type": "string"
+      "type": "text"
     },
     "link": {
       "type": "string"
