@@ -849,6 +849,7 @@ export interface ApiCalendareventCalendarevent extends Schema.CollectionType {
     beskrivning: Attribute.Text;
     link: Attribute.String;
     thumbnail: Attribute.Media;
+    linktext: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

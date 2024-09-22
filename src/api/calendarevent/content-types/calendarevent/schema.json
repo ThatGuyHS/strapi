@@ -34,6 +34,9 @@
         "videos",
         "audios"
       ]
+    },
+    "linktext": {
+      "type": "string"
     }
   }
 }
