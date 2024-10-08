@@ -1080,6 +1080,7 @@ export interface ApiNordiskamasterskapenNordiskamasterskapen
     singularName: 'nordiskamasterskapen';
     pluralName: 'nordiskamasterskapens';
     displayName: '/nordiskamasterskapen';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1092,7 +1093,7 @@ export interface ApiNordiskamasterskapenNordiskamasterskapen
     sektion_1_text: Attribute.Text;
     sektion_1_bild: Attribute.Media;
     sektion_2_titel: Attribute.String;
-    sektion_2_text: Attribute.String;
+    sektion_2_text: Attribute.Text;
     sektion_2_bild: Attribute.Media;
     sektion_2_bild_text: Attribute.String;
     publiceringsmanad: Attribute.String;
