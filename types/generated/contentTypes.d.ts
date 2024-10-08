@@ -1118,6 +1118,48 @@ export interface ApiNordiskamasterskapenNordiskamasterskapen
   };
 }
 
+export interface ApiNordiskamasterskapenEnNordiskamasterskapenEn
+  extends Schema.CollectionType {
+  collectionName: 'nordiskamasterskapen_ens';
+  info: {
+    singularName: 'nordiskamasterskapen-en';
+    pluralName: 'nordiskamasterskapen-ens';
+    displayName: '/nordiskamasterskapen/en';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    thumbnail: Attribute.Media;
+    thumbnailText: Attribute.String;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Text;
+    sektion_1_bild: Attribute.Media;
+    sektion_2_titel: Attribute.String;
+    sektion_2_text: Attribute.Text;
+    publiceringsmanad: Attribute.String;
+    slug: Attribute.String;
+    projektartikel: Attribute.Boolean;
+    vikt: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::nordiskamasterskapen-en.nordiskamasterskapen-en',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::nordiskamasterskapen-en.nordiskamasterskapen-en',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPlayerPlayer extends Schema.CollectionType {
   collectionName: 'players';
   info: {
@@ -1225,6 +1267,7 @@ declare module '@strapi/types' {
       'api::how-become-member.how-become-member': ApiHowBecomeMemberHowBecomeMember;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
       'api::nordiskamasterskapen.nordiskamasterskapen': ApiNordiskamasterskapenNordiskamasterskapen;
+      'api::nordiskamasterskapen-en.nordiskamasterskapen-en': ApiNordiskamasterskapenEnNordiskamasterskapenEn;
       'api::player.player': ApiPlayerPlayer;
       'api::why-become-member.why-become-member': ApiWhyBecomeMemberWhyBecomeMember;
     }
