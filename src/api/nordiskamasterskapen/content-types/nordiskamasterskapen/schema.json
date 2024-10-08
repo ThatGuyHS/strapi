@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nordiskamasterskapens",
+  "info": {
+    "singularName": "nordiskamasterskapen",
+    "pluralName": "nordiskamasterskapens",
+    "displayName": "/nordiskamasterskapen"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titel": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "thumbnailText": {
+      "type": "string"
+    },
+    "sektion_1_titel": {
+      "type": "string"
+    },
+    "sektion_1_text": {
+      "type": "text"
+    },
+    "sektion_1_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "sektion_2_titel": {
+      "type": "string"
+    },
+    "sektion_2_text": {
+      "type": "string"
+    },
+    "sektion_2_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "sektion_2_bild_text": {
+      "type": "string"
+    },
+    "publiceringsmanad": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "projektartikel": {
+      "type": "boolean"
+    },
+    "vikt": {
+      "type": "integer"
+    }
+  }
+}

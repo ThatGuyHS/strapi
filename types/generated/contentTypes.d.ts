@@ -1073,6 +1073,50 @@ export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
   };
 }
 
+export interface ApiNordiskamasterskapenNordiskamasterskapen
+  extends Schema.CollectionType {
+  collectionName: 'nordiskamasterskapens';
+  info: {
+    singularName: 'nordiskamasterskapen';
+    pluralName: 'nordiskamasterskapens';
+    displayName: '/nordiskamasterskapen';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    thumbnail: Attribute.Media;
+    thumbnailText: Attribute.String;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Text;
+    sektion_1_bild: Attribute.Media;
+    sektion_2_titel: Attribute.String;
+    sektion_2_text: Attribute.String;
+    sektion_2_bild: Attribute.Media;
+    sektion_2_bild_text: Attribute.String;
+    publiceringsmanad: Attribute.String;
+    slug: Attribute.String;
+    projektartikel: Attribute.Boolean;
+    vikt: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::nordiskamasterskapen.nordiskamasterskapen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::nordiskamasterskapen.nordiskamasterskapen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPlayerPlayer extends Schema.CollectionType {
   collectionName: 'players';
   info: {
@@ -1179,6 +1223,7 @@ declare module '@strapi/types' {
       'api::game-title.game-title': ApiGameTitleGameTitle;
       'api::how-become-member.how-become-member': ApiHowBecomeMemberHowBecomeMember;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
+      'api::nordiskamasterskapen.nordiskamasterskapen': ApiNordiskamasterskapenNordiskamasterskapen;
       'api::player.player': ApiPlayerPlayer;
       'api::why-become-member.why-become-member': ApiWhyBecomeMemberWhyBecomeMember;
     }
