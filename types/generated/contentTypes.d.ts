@@ -992,47 +992,6 @@ export interface ApiGameTitleGameTitle extends Schema.CollectionType {
   };
 }
 
-export interface ApiHowBecomeMemberHowBecomeMember
-  extends Schema.CollectionType {
-  collectionName: 'how_become_members';
-  info: {
-    singularName: 'how-become-member';
-    pluralName: 'how-become-members';
-    displayName: '/hur-bli-medlem';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    titel: Attribute.String;
-    headerbild: Attribute.Media;
-    sektion_1_titel: Attribute.String;
-    sektion_1_text: Attribute.Blocks;
-    sektion_2_titel: Attribute.String;
-    sektion_2_bild: Attribute.Media;
-    sektion_2_text: Attribute.Blocks;
-    sektion_3_titel: Attribute.String;
-    sektion_3_text: Attribute.Blocks;
-    sektion_3_bild: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::how-become-member.how-become-member',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::how-become-member.how-become-member',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
   collectionName: 'national_teams';
   info: {
@@ -1206,7 +1165,7 @@ export interface ApiWhyBecomeMemberWhyBecomeMember
   info: {
     singularName: 'why-become-member';
     pluralName: 'why-become-members';
-    displayName: '/varfor-bli-medlem';
+    displayName: '/bli-medlem';
     description: '';
   };
   options: {
@@ -1264,7 +1223,6 @@ declare module '@strapi/types' {
       'api::forbundetinfo.forbundetinfo': ApiForbundetinfoForbundetinfo;
       'api::forening.forening': ApiForeningForening;
       'api::game-title.game-title': ApiGameTitleGameTitle;
-      'api::how-become-member.how-become-member': ApiHowBecomeMemberHowBecomeMember;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
       'api::nordiskamasterskapen.nordiskamasterskapen': ApiNordiskamasterskapenNordiskamasterskapen;
       'api::nordiskamasterskapen-en.nordiskamasterskapen-en': ApiNordiskamasterskapenEnNordiskamasterskapenEn;
