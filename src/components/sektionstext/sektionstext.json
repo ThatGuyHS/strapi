@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sektionstext_sektionstexts",
+  "info": {
+    "displayName": "sektionstext",
+    "icon": "filter"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "blocks"
+    }
+  }
+}

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "nordiskamasterskapen-en",
     "pluralName": "nordiskamasterskapen-ens",
-    "displayName": "/nordiskamasterskapen/en"
+    "displayName": "/nordiskamasterskapen/en",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,14 +16,15 @@
       "type": "string"
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "thumbnailText": {
       "type": "string"
@@ -34,14 +36,15 @@
       "type": "text"
     },
     "sektion_1_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "sektion_2_titel": {
       "type": "string"
@@ -60,6 +63,36 @@
     },
     "vikt": {
       "type": "integer"
+    },
+    "sektion_3_titel": {
+      "type": "string"
+    },
+    "sektion_3_text": {
+      "type": "text"
+    },
+    "sektion_3_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sektion_4_text": {
+      "type": "text"
+    },
+    "sektion_4_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

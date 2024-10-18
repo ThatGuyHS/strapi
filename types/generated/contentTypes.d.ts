@@ -1059,6 +1059,12 @@ export interface ApiNordiskamasterskapenNordiskamasterskapen
     slug: Attribute.String;
     projektartikel: Attribute.Boolean;
     vikt: Attribute.Integer;
+    sektion_3_text: Attribute.Text;
+    sektion_3_bild: Attribute.Media;
+    sektion_4_text: Attribute.Text;
+    sektion_4_bild: Attribute.Media;
+    sektion_3_titel: Attribute.String;
+    sektion_4_titel: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1084,6 +1090,7 @@ export interface ApiNordiskamasterskapenEnNordiskamasterskapenEn
     singularName: 'nordiskamasterskapen-en';
     pluralName: 'nordiskamasterskapen-ens';
     displayName: '/nordiskamasterskapen/en';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1101,6 +1108,11 @@ export interface ApiNordiskamasterskapenEnNordiskamasterskapenEn
     slug: Attribute.String;
     projektartikel: Attribute.Boolean;
     vikt: Attribute.Integer;
+    sektion_3_titel: Attribute.String;
+    sektion_3_text: Attribute.Text;
+    sektion_3_bild: Attribute.Media;
+    sektion_4_text: Attribute.Text;
+    sektion_4_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1155,6 +1167,31 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSidaSida extends Schema.CollectionType {
+  collectionName: 'sidas';
+  info: {
+    singularName: 'sida';
+    pluralName: 'sidas';
+    displayName: 'sida';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Sida: Attribute.DynamicZone<
+      ['titel.titel', 'mainbild.mainbild', 'sektionstext.sektionstext']
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::sida.sida', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::sida.sida', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1227,6 +1264,7 @@ declare module '@strapi/types' {
       'api::nordiskamasterskapen.nordiskamasterskapen': ApiNordiskamasterskapenNordiskamasterskapen;
       'api::nordiskamasterskapen-en.nordiskamasterskapen-en': ApiNordiskamasterskapenEnNordiskamasterskapenEn;
       'api::player.player': ApiPlayerPlayer;
+      'api::sida.sida': ApiSidaSida;
       'api::why-become-member.why-become-member': ApiWhyBecomeMemberWhyBecomeMember;
     }
   }

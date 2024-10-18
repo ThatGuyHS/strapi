@@ -40,6 +40,17 @@ export interface LandslagResultatResultat extends Schema.Component {
   };
 }
 
+export interface MainbildMainbild extends Schema.Component {
+  collectionName: 'components_mainbild_mainbilds';
+  info: {
+    displayName: 'mainbild';
+    icon: 'archive';
+  };
+  attributes: {
+    bild: Attribute.Media;
+  };
+}
+
 export interface PlayersPlayer extends Schema.Component {
   collectionName: 'components_players_players';
   info: {
@@ -55,13 +66,38 @@ export interface PlayersPlayer extends Schema.Component {
   };
 }
 
+export interface SektionstextSektionstext extends Schema.Component {
+  collectionName: 'components_sektionstext_sektionstexts';
+  info: {
+    displayName: 'sektionstext';
+    icon: 'filter';
+  };
+  attributes: {
+    text: Attribute.Blocks;
+  };
+}
+
+export interface TitelTitel extends Schema.Component {
+  collectionName: 'components_titel_titels';
+  info: {
+    displayName: 'Titel';
+    icon: 'alien';
+  };
+  attributes: {
+    titel: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'handling.arsmoeteshandling': HandlingArsmoeteshandling;
       'kansli.member': KansliMember;
       'landslag-resultat.resultat': LandslagResultatResultat;
+      'mainbild.mainbild': MainbildMainbild;
       'players.player': PlayersPlayer;
+      'sektionstext.sektionstext': SektionstextSektionstext;
+      'titel.titel': TitelTitel;
     }
   }
 }
