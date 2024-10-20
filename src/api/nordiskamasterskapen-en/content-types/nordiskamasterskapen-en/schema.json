@@ -97,6 +97,16 @@
     },
     "sektion_4_titel": {
       "type": "string"
+    },
+    "sektion_2_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
