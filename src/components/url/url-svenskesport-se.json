@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_url_url_svenskesport_se_s",
+  "info": {
+    "displayName": "URL (svenskesport.se/)"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    }
+  }
+}

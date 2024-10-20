@@ -85,14 +85,18 @@
       "type": "text"
     },
     "sektion_4_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "sektion_4_titel": {
+      "type": "string"
     }
   }
 }

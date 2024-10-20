@@ -88,6 +88,16 @@ export interface TitelTitel extends Schema.Component {
   };
 }
 
+export interface UrlUrlSvenskesportSe extends Schema.Component {
+  collectionName: 'components_url_url_svenskesport_se_s';
+  info: {
+    displayName: 'URL (svenskesport.se/)';
+  };
+  attributes: {
+    url: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -98,6 +108,7 @@ declare module '@strapi/types' {
       'players.player': PlayersPlayer;
       'sektionstext.sektionstext': SektionstextSektionstext;
       'titel.titel': TitelTitel;
+      'url.url-svenskesport-se': UrlUrlSvenskesportSe;
     }
   }
 }
