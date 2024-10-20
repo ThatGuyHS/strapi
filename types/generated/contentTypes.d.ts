@@ -1114,6 +1114,7 @@ export interface ApiNordiskamasterskapenEnNordiskamasterskapenEn
     sektion_4_text: Attribute.Text;
     sektion_4_bild: Attribute.Media;
     sektion_4_titel: Attribute.String;
+    sektion_2_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
