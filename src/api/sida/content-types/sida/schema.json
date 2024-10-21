@@ -17,7 +17,8 @@
       "components": [
         "titel.titel",
         "mainbild.mainbild",
-        "sektionstext.sektionstext"
+        "sektionstext.sektionstext",
+        "url.url-svenskesport-se"
       ]
     }
   }

@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "how_become_members",
+  "info": {
+    "singularName": "how-become-member",
+    "pluralName": "how-become-members",
+    "displayName": "HowBecomeMember"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titel": {
+      "type": "string"
+    }
+  }
+}

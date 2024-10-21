@@ -992,6 +992,37 @@ export interface ApiGameTitleGameTitle extends Schema.CollectionType {
   };
 }
 
+export interface ApiHowBecomeMemberHowBecomeMember
+  extends Schema.CollectionType {
+  collectionName: 'how_become_members';
+  info: {
+    singularName: 'how-become-member';
+    pluralName: 'how-become-members';
+    displayName: 'HowBecomeMember';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::how-become-member.how-become-member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::how-become-member.how-become-member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
   collectionName: 'national_teams';
   info: {
@@ -1186,7 +1217,12 @@ export interface ApiSidaSida extends Schema.CollectionType {
   };
   attributes: {
     Sida: Attribute.DynamicZone<
-      ['titel.titel', 'mainbild.mainbild', 'sektionstext.sektionstext']
+      [
+        'titel.titel',
+        'mainbild.mainbild',
+        'sektionstext.sektionstext',
+        'url.url-svenskesport-se'
+      ]
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1262,6 +1298,7 @@ declare module '@strapi/types' {
       'api::forbundetinfo.forbundetinfo': ApiForbundetinfoForbundetinfo;
       'api::forening.forening': ApiForeningForening;
       'api::game-title.game-title': ApiGameTitleGameTitle;
+      'api::how-become-member.how-become-member': ApiHowBecomeMemberHowBecomeMember;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
       'api::nordiskamasterskapen.nordiskamasterskapen': ApiNordiskamasterskapenNordiskamasterskapen;
       'api::nordiskamasterskapen-en.nordiskamasterskapen-en': ApiNordiskamasterskapenEnNordiskamasterskapenEn;
