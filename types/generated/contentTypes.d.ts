@@ -803,9 +803,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     titel: Attribute.String;
     thumbnail: Attribute.Media;
     thumbnailText: Attribute.String;
-    sektion_1_titel: Attribute.String;
     sektion_1_text: Attribute.Text;
-    sektion_1_bild: Attribute.Media;
     sektion_2_titel: Attribute.String;
     sektion_2_text: Attribute.Text;
     sektion_2_bild: Attribute.Media;

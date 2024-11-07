@@ -29,22 +29,8 @@
     "thumbnailText": {
       "type": "string"
     },
-    "sektion_1_titel": {
-      "type": "string"
-    },
     "sektion_1_text": {
       "type": "text"
-    },
-    "sektion_1_bild": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
     },
     "sektion_2_titel": {
       "type": "string"
