@@ -896,6 +896,7 @@ export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
     >;
     sektion_1_bild: Attribute.Media;
     sektion_1_titel: Attribute.String;
+    styrelsen_titel: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
