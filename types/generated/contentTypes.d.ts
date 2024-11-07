@@ -894,6 +894,8 @@ export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
       'handling.arsmoeteshandling',
       true
     >;
+    sektion_1_bild: Attribute.Media;
+    sektion_1_titel: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

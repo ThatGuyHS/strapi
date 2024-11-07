@@ -68,6 +68,19 @@
       "type": "component",
       "repeatable": true,
       "component": "handling.arsmoeteshandling"
+    },
+    "sektion_1_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "sektion_1_titel": {
+      "type": "string"
     }
   }
 }
