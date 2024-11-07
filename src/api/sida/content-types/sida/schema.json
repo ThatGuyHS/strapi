@@ -20,6 +20,14 @@
         "sektionstext.sektionstext",
         "url.url-svenskesport-se"
       ]
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": [
+        "titel, headerbild, leftaligned text (anbud) ",
+        "headerbild (med titel), 3 stycken text (historia) ",
+        "headerbild, textstycken (bild t höger/vänster)"
+      ]
     }
   }
 }

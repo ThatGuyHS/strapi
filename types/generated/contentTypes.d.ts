@@ -1262,6 +1262,13 @@ export interface ApiSidaSida extends Schema.CollectionType {
         'url.url-svenskesport-se'
       ]
     >;
+    layout: Attribute.Enumeration<
+      [
+        'titel, headerbild, leftaligned text (anbud) ',
+        'headerbild (med titel), 3 stycken text (historia) ',
+        'headerbild, textstycken (bild t h\u00F6ger/v\u00E4nster)'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
