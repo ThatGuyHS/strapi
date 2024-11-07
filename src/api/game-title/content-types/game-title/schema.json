@@ -32,9 +32,6 @@
     "sektion_1_titel": {
       "type": "string"
     },
-    "sektion_1_text": {
-      "type": "text"
-    },
     "sektion_1_bild": {
       "type": "media",
       "multiple": false,
@@ -48,9 +45,6 @@
     },
     "sektion_2_titel": {
       "type": "string"
-    },
-    "sektion_2_text": {
-      "type": "text"
     },
     "sektion_2_bild": {
       "type": "media",
@@ -86,6 +80,12 @@
     },
     "regelverk_2_link": {
       "type": "string"
+    },
+    "sektion_1_text": {
+      "type": "blocks"
+    },
+    "sektion_2_text": {
+      "type": "blocks"
     }
   }
 }

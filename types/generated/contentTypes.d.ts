@@ -962,10 +962,8 @@ export interface ApiGameTitleGameTitle extends Schema.CollectionType {
     thumbnail: Attribute.Media;
     thumbnailText: Attribute.String;
     sektion_1_titel: Attribute.String;
-    sektion_1_text: Attribute.Text;
     sektion_1_bild: Attribute.Media;
     sektion_2_titel: Attribute.String;
-    sektion_2_text: Attribute.Text;
     sektion_2_bild: Attribute.Media;
     section_2_bild_text: Attribute.Text;
     slug: Attribute.String;
@@ -975,6 +973,8 @@ export interface ApiGameTitleGameTitle extends Schema.CollectionType {
     regelverk_3_titel: Attribute.String;
     regelverk_3_link: Attribute.String;
     regelverk_2_link: Attribute.String;
+    sektion_1_text: Attribute.Blocks;
+    sektion_2_text: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
