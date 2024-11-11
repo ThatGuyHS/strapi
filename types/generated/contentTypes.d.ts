@@ -1280,6 +1280,39 @@ export interface ApiSidaSida extends Schema.CollectionType {
   };
 }
 
+export interface ApiSponsorerSponsorer extends Schema.CollectionType {
+  collectionName: 'sponsorers';
+  info: {
+    singularName: 'sponsorer';
+    pluralName: 'sponsorers';
+    displayName: '/sponsorer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    namn: Attribute.String;
+    beskrivning: Attribute.Blocks;
+    webbsidelank: Attribute.String;
+    bild: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sponsorer.sponsorer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sponsorer.sponsorer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWhyBecomeMemberWhyBecomeMember
   extends Schema.CollectionType {
   collectionName: 'why_become_members';
@@ -1351,6 +1384,7 @@ declare module '@strapi/types' {
       'api::nordiskamasterskapen-en.nordiskamasterskapen-en': ApiNordiskamasterskapenEnNordiskamasterskapenEn;
       'api::player.player': ApiPlayerPlayer;
       'api::sida.sida': ApiSidaSida;
+      'api::sponsorer.sponsorer': ApiSponsorerSponsorer;
       'api::why-become-member.why-become-member': ApiWhyBecomeMemberWhyBecomeMember;
     }
   }
