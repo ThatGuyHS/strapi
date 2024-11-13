@@ -1293,7 +1293,7 @@ export interface ApiSponsorerSponsorer extends Schema.CollectionType {
   info: {
     singularName: 'sponsorer';
     pluralName: 'sponsorers';
-    displayName: 'sponsorer';
+    displayName: '/sponsorer';
   };
   options: {
     draftAndPublish: true;
