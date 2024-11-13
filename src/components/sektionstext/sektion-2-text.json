@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sektionstext_sektion_2_texts",
+  "info": {
+    "displayName": "sektion-2-text"
+  },
+  "options": {},
+  "attributes": {
+    "test": {
+      "type": "blocks"
+    }
+  }
+}

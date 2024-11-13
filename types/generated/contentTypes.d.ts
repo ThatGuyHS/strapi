@@ -803,15 +803,15 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     titel: Attribute.String;
     thumbnail: Attribute.Media;
     thumbnailText: Attribute.String;
-    sektion_1_text: Attribute.Text;
     sektion_2_titel: Attribute.String;
-    sektion_2_text: Attribute.Text;
     sektion_2_bild: Attribute.Media;
     sektion_2_bild_text: Attribute.Text;
     publiceringsmanad: Attribute.String;
     slug: Attribute.String;
     projektArtikel: Attribute.Boolean;
     vikt: Attribute.Integer;
+    sektion_1_text: Attribute.Blocks;
+    sektion_2_text: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -880,10 +880,8 @@ export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
   attributes: {
     headerbild: Attribute.Media;
     titel: Attribute.String;
-    sektion1_text: Attribute.Text;
     sektion_2_titel: Attribute.String;
     sektion_2_bild: Attribute.Media;
-    sektion_2_text: Attribute.Text;
     kansliet_titel: Attribute.String;
     kanslimedlem: Attribute.Component<'kansli.member', true>;
     styrelsemedlem: Attribute.Component<'kansli.member', true>;
@@ -895,6 +893,8 @@ export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
     sektion_1_bild: Attribute.Media;
     sektion_1_titel: Attribute.String;
     styrelsen_titel: Attribute.String;
+    sektion_1_text: Attribute.Blocks;
+    sektion_2_text: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1256,12 +1256,7 @@ export interface ApiSidaSida extends Schema.CollectionType {
   };
   attributes: {
     Sida: Attribute.DynamicZone<
-      [
-        'titel.titel',
-        'mainbild.mainbild',
-        'sektionstext.sektionstext',
-        'url.url-svenskesport-se'
-      ]
+      ['titel.titel', 'mainbild.mainbild', 'url.url-svenskesport-se']
     >;
     layout: Attribute.Enumeration<
       [
@@ -1270,12 +1265,58 @@ export interface ApiSidaSida extends Schema.CollectionType {
         'headerbild, textstycken (bild t h\u00F6ger/v\u00E4nster)'
       ]
     >;
+    sektion_1_text: Attribute.Blocks;
+    sektion_2_titel: Attribute.String;
+    sektion_2_text: Attribute.Blocks;
+    sektion_3_titel: Attribute.String;
+    sektion_3_text: Attribute.Blocks;
+    headerbild: Attribute.Media;
+    sektion_2_bild: Attribute.Media;
+    sektion_3_bild: Attribute.Media;
+    datum: Attribute.String;
+    huvudtext: Attribute.Blocks;
+    hero_image: Attribute.Media;
+    sektion_4_text: Attribute.Blocks;
+    sektion_4_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::sida.sida', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::sida.sida', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSponsorerSponsorer extends Schema.CollectionType {
+  collectionName: 'sponsorers';
+  info: {
+    singularName: 'sponsorer';
+    pluralName: 'sponsorers';
+    displayName: 'sponsorer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    namn: Attribute.String;
+    beskrivning: Attribute.Blocks;
+    webbsidelank: Attribute.String;
+    bild: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sponsorer.sponsorer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sponsorer.sponsorer',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1351,6 +1392,7 @@ declare module '@strapi/types' {
       'api::nordiskamasterskapen-en.nordiskamasterskapen-en': ApiNordiskamasterskapenEnNordiskamasterskapenEn;
       'api::player.player': ApiPlayerPlayer;
       'api::sida.sida': ApiSidaSida;
+      'api::sponsorer.sponsorer': ApiSponsorerSponsorer;
       'api::why-become-member.why-become-member': ApiWhyBecomeMemberWhyBecomeMember;
     }
   }

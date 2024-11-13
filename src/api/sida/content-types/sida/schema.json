@@ -17,7 +17,6 @@
       "components": [
         "titel.titel",
         "mainbild.mainbild",
-        "sektionstext.sektionstext",
         "url.url-svenskesport-se"
       ]
     },
@@ -28,6 +27,84 @@
         "headerbild (med titel), 3 stycken text (historia) ",
         "headerbild, textstycken (bild t höger/vänster)"
       ]
+    },
+    "sektion_1_text": {
+      "type": "blocks"
+    },
+    "sektion_2_titel": {
+      "type": "string"
+    },
+    "sektion_2_text": {
+      "type": "blocks"
+    },
+    "sektion_3_titel": {
+      "type": "string"
+    },
+    "sektion_3_text": {
+      "type": "blocks"
+    },
+    "headerbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sektion_2_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sektion_3_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "datum": {
+      "type": "string"
+    },
+    "huvudtext": {
+      "type": "blocks"
+    },
+    "hero_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sektion_4_text": {
+      "type": "blocks"
+    },
+    "sektion_4_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

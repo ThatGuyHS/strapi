@@ -26,9 +26,6 @@
     "titel": {
       "type": "string"
     },
-    "sektion1_text": {
-      "type": "text"
-    },
     "sektion_2_titel": {
       "type": "string"
     },
@@ -42,9 +39,6 @@
         "videos",
         "audios"
       ]
-    },
-    "sektion_2_text": {
-      "type": "text"
     },
     "kansliet_titel": {
       "type": "string"
@@ -85,6 +79,12 @@
     },
     "styrelsen_titel": {
       "type": "string"
+    },
+    "sektion_1_text": {
+      "type": "blocks"
+    },
+    "sektion_2_text": {
+      "type": "blocks"
     }
   }
 }

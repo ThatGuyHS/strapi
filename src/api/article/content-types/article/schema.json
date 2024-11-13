@@ -29,14 +29,8 @@
     "thumbnailText": {
       "type": "string"
     },
-    "sektion_1_text": {
-      "type": "text"
-    },
     "sektion_2_titel": {
       "type": "string"
-    },
-    "sektion_2_text": {
-      "type": "text"
     },
     "sektion_2_bild": {
       "type": "media",
@@ -63,6 +57,12 @@
     },
     "vikt": {
       "type": "integer"
+    },
+    "sektion_1_text": {
+      "type": "blocks"
+    },
+    "sektion_2_text": {
+      "type": "blocks"
     }
   }
 }

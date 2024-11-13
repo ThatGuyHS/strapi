@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sektion_4_text_sektion_4_texts",
+  "info": {
+    "displayName": "sektion-4-text"
+  },
+  "options": {},
+  "attributes": {
+    "sektion4text": {
+      "type": "blocks"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sektion_3_bild_sektion_3_bilds",
+  "info": {
+    "displayName": "sektion-3-bild"
+  },
+  "options": {},
+  "attributes": {
+    "bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

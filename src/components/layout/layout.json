@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_layout_layouts",
+  "info": {
+    "displayName": "layout"
+  },
+  "options": {},
+  "attributes": {
+    "layout": {
+      "type": "enumeration",
+      "enum": [
+        "layout1",
+        "layout2",
+        "layout3"
+      ]
+    }
+  }
+}

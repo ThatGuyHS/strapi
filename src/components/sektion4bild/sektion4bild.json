@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sektion4bild_sektion4bilds",
+  "info": {
+    "displayName": "sektion4bild"
+  },
+  "options": {},
+  "attributes": {
+    "bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
