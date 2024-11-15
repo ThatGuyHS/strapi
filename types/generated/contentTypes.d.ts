@@ -812,6 +812,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     vikt: Attribute.Integer;
     sektion_1_text: Attribute.Blocks;
     sektion_2_text: Attribute.Blocks;
+    avslutatProjekt: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -63,6 +63,9 @@
     },
     "sektion_2_text": {
       "type": "blocks"
+    },
+    "avslutatProjekt": {
+      "type": "boolean"
     }
   }
 }
