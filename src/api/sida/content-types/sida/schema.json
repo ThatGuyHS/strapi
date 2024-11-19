@@ -97,6 +97,17 @@
       "type": "blocks"
     },
     "sektion_4_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sektion_1_bild": {
       "allowedTypes": [
         "images",
         "files",

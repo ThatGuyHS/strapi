@@ -1319,6 +1319,7 @@ export interface ApiSidaSida extends Schema.CollectionType {
     hero_image: Attribute.Media;
     sektion_4_text: Attribute.Blocks;
     sektion_4_bild: Attribute.Media;
+    sektion_1_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
