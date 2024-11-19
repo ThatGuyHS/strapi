@@ -1063,6 +1063,45 @@ export interface ApiHowBecomeMemberHowBecomeMember
   };
 }
 
+export interface ApiLandingPageLandingPage extends Schema.CollectionType {
+  collectionName: 'landing_pages';
+  info: {
+    singularName: 'landing-page';
+    pluralName: 'landing-pages';
+    displayName: 'landing-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    headertitel: Attribute.String;
+    headerbild: Attribute.Media;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Blocks;
+    sektion_2_titel: Attribute.String;
+    sektion_2_text: Attribute.Blocks;
+    sektion_2_bild: Attribute.Media;
+    sektion_3_titel: Attribute.String;
+    sektion_3_text: Attribute.Blocks;
+    sponsorer: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::landing-page.landing-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::landing-page.landing-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
   collectionName: 'national_teams';
   info: {
@@ -1311,12 +1350,10 @@ export interface ApiSidaSida extends Schema.CollectionType {
     sektion_2_text: Attribute.Blocks;
     sektion_3_titel: Attribute.String;
     sektion_3_text: Attribute.Blocks;
-    headerbild: Attribute.Media;
     sektion_2_bild: Attribute.Media;
     sektion_3_bild: Attribute.Media;
     datum: Attribute.String;
     huvudtext: Attribute.Blocks;
-    hero_image: Attribute.Media;
     sektion_4_text: Attribute.Blocks;
     sektion_4_bild: Attribute.Media;
     sektion_1_bild: Attribute.Media;
@@ -1429,6 +1466,7 @@ declare module '@strapi/types' {
       'api::game-title.game-title': ApiGameTitleGameTitle;
       'api::historia.historia': ApiHistoriaHistoria;
       'api::how-become-member.how-become-member': ApiHowBecomeMemberHowBecomeMember;
+      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
       'api::navbar-item.navbar-item': ApiNavbarItemNavbarItem;
       'api::nordiskamasterskapen.nordiskamasterskapen': ApiNordiskamasterskapenNordiskamasterskapen;

@@ -43,17 +43,6 @@
     "sektion_3_text": {
       "type": "blocks"
     },
-    "headerbild": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "sektion_2_bild": {
       "type": "media",
       "multiple": false,
@@ -82,17 +71,6 @@
     "huvudtext": {
       "type": "blocks"
     },
-    "hero_image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "sektion_4_text": {
       "type": "blocks"
     },
@@ -108,14 +86,15 @@
       ]
     },
     "sektion_1_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }
