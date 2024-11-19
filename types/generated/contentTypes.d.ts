@@ -1069,6 +1069,7 @@ export interface ApiLandingPageLandingPage extends Schema.CollectionType {
     singularName: 'landing-page';
     pluralName: 'landing-pages';
     displayName: 'landing-page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1084,6 +1085,7 @@ export interface ApiLandingPageLandingPage extends Schema.CollectionType {
     sektion_3_titel: Attribute.String;
     sektion_3_text: Attribute.Blocks;
     sponsorer: Attribute.Media;
+    sektion_3_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
