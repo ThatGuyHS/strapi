@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navbar_items",
+  "info": {
+    "singularName": "navbar-item",
+    "pluralName": "navbar-items",
+    "displayName": "navbar-item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dropdownitem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "dropdown-item.navigation"
+    },
+    "headertitle": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "min": 1
+    },
+    "harDropdown": {
+      "type": "boolean"
+    }
+  }
+}

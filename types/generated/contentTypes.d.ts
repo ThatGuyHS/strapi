@@ -1103,6 +1103,46 @@ export interface ApiNationalTeamNationalTeam extends Schema.CollectionType {
   };
 }
 
+export interface ApiNavbarItemNavbarItem extends Schema.CollectionType {
+  collectionName: 'navbar_items';
+  info: {
+    singularName: 'navbar-item';
+    pluralName: 'navbar-items';
+    displayName: 'navbar-item';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    dropdownitem: Attribute.Component<'dropdown-item.navigation', true>;
+    headertitle: Attribute.String;
+    order: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    harDropdown: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navbar-item.navbar-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navbar-item.navbar-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNordiskamasterskapenNordiskamasterskapen
   extends Schema.CollectionType {
   collectionName: 'nordiskamasterskapens';
@@ -1389,6 +1429,7 @@ declare module '@strapi/types' {
       'api::historia.historia': ApiHistoriaHistoria;
       'api::how-become-member.how-become-member': ApiHowBecomeMemberHowBecomeMember;
       'api::national-team.national-team': ApiNationalTeamNationalTeam;
+      'api::navbar-item.navbar-item': ApiNavbarItemNavbarItem;
       'api::nordiskamasterskapen.nordiskamasterskapen': ApiNordiskamasterskapenNordiskamasterskapen;
       'api::nordiskamasterskapen-en.nordiskamasterskapen-en': ApiNordiskamasterskapenEnNordiskamasterskapenEn;
       'api::player.player': ApiPlayerPlayer;

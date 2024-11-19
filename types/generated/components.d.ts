@@ -1,5 +1,24 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface DropdownItemNavigation extends Schema.Component {
+  collectionName: 'components_dropdown_item_navigations';
+  info: {
+    displayName: 'dropdownitem';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    link: Attribute.String;
+    order: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+  };
+}
+
 export interface HandlingArsmoeteshandling extends Schema.Component {
   collectionName: 'components_handling_arsmoeteshandlings';
   info: {
@@ -58,6 +77,24 @@ export interface MainbildMainbild extends Schema.Component {
   };
   attributes: {
     bild: Attribute.Media;
+  };
+}
+
+export interface NavigationNavigation extends Schema.Component {
+  collectionName: 'components_navigation_navigations';
+  info: {
+    displayName: 'navigation';
+  };
+  attributes: {
+    title: Attribute.String;
+    link: Attribute.String;
+    order: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
   };
 }
 
@@ -170,11 +207,13 @@ export interface UrlUrlSvenskesportSe extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'dropdown-item.navigation': DropdownItemNavigation;
       'handling.arsmoeteshandling': HandlingArsmoeteshandling;
       'kansli.member': KansliMember;
       'landslag-resultat.resultat': LandslagResultatResultat;
       'layout.layout': LayoutLayout;
       'mainbild.mainbild': MainbildMainbild;
+      'navigation.navigation': NavigationNavigation;
       'players.player': PlayersPlayer;
       'sektion-2-text.sektion-2-text': Sektion2TextSektion2Text;
       'sektion-3-bild.sektion-3-bild': Sektion3BildSektion3Bild;

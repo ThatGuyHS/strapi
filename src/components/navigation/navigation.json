@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_navigation_navigations",
+  "info": {
+    "displayName": "navigation"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "min": 1
+    }
+  }
+}

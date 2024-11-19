@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_dropdown_item_navigations",
+  "info": {
+    "displayName": "dropdownitem",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "min": 1
+    }
+  }
+}
