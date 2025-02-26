@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tjansters",
+  "info": {
+    "singularName": "tjanster",
+    "pluralName": "tjansters",
+    "displayName": "tjanster"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "lank": {
+      "type": "string"
+    },
+    "beskrivning": {
+      "type": "text"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "jobbtyp": {
+      "type": "string"
+    },
+    "plats": {
+      "type": "string"
+    },
+    "deadline": {
+      "type": "date"
+    }
+  }
+}

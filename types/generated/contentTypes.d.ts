@@ -1402,6 +1402,75 @@ export interface ApiSponsorerSponsorer extends Schema.CollectionType {
   };
 }
 
+export interface ApiTjansterTjanster extends Schema.CollectionType {
+  collectionName: 'tjansters';
+  info: {
+    singularName: 'tjanster';
+    pluralName: 'tjansters';
+    displayName: 'tjanster';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    lank: Attribute.String;
+    beskrivning: Attribute.Text;
+    content: Attribute.Blocks;
+    jobbtyp: Attribute.String;
+    plats: Attribute.String;
+    deadline: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tjanster.tjanster',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tjanster.tjanster',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTjansterbeskrivningTjansterbeskrivning
+  extends Schema.CollectionType {
+  collectionName: 'tjansterbeskrivnings';
+  info: {
+    singularName: 'tjansterbeskrivning';
+    pluralName: 'tjansterbeskrivnings';
+    displayName: 'tjansterbeskrivning';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    bild: Attribute.Media;
+    text: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tjansterbeskrivning.tjansterbeskrivning',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tjansterbeskrivning.tjansterbeskrivning',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWhyBecomeMemberWhyBecomeMember
   extends Schema.CollectionType {
   collectionName: 'why_become_members';
@@ -1476,6 +1545,8 @@ declare module '@strapi/types' {
       'api::player.player': ApiPlayerPlayer;
       'api::sida.sida': ApiSidaSida;
       'api::sponsorer.sponsorer': ApiSponsorerSponsorer;
+      'api::tjanster.tjanster': ApiTjansterTjanster;
+      'api::tjansterbeskrivning.tjansterbeskrivning': ApiTjansterbeskrivningTjansterbeskrivning;
       'api::why-become-member.why-become-member': ApiWhyBecomeMemberWhyBecomeMember;
     }
   }
