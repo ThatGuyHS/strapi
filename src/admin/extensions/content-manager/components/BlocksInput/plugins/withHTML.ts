@@ -1,4 +1,4 @@
-import { Descendant, Transforms, Node } from 'slate';
+import { Descendant, Transforms, Node, Text, Element } from 'slate';
 import { type Editor } from 'slate';
 import { jsx } from 'slate-hyperscript';
 
@@ -71,109 +71,115 @@ function checkIfGoogleDoc(el: HTMLElement) {
   return el.nodeName === 'B' && el.id?.startsWith('docs-internal-guid-');
 }
 
-// Check if an element has drag-related attributes or content
-function hasDragContent(el: HTMLElement): boolean {
-  // Check for drag-related attributes
-  if (el.getAttribute('draggable') === 'true' || 
-      el.hasAttribute('data-drag') || 
-      el.hasAttribute('data-draggable')) {
-    return true;
-  }
+// AGGRESSIVE CLEANING FUNCTIONS
+
+// Check if text contains any drag-related content
+function containsDragText(text: string | null): boolean {
+  if (!text) return false;
   
-  // Check for drag-related classes
-  if (el.className && 
-      (el.className.includes('drag') || 
-       el.className.includes('draggable'))) {
-    return true;
-  }
-  
-  // Check for drag-related IDs
-  if (el.id && 
-      (el.id.includes('drag') || 
-       el.id.includes('draggable'))) {
-    return true;
-  }
-  
-  // Check for drag-related text content
-  if (el.textContent && 
-      (el.textContent.toLowerCase().includes('dragdrag') || 
-       el.textContent.toLowerCase() === 'drag')) {
-    return true;
-  }
-  
-  return false;
+  const lowerText = text.toLowerCase();
+  return lowerText.includes('drag') || 
+         lowerText.includes('drg') || 
+         lowerText.match(/dr+a+g+/i) !== null;
 }
 
-// Clean HTML string by removing drag-related content
-function cleanHtmlString(html: string): string {
-  // Remove any instances of "dragdrag" specifically (the exact pattern reported)
-  let cleanedHtml = html.replace(/dragdrag/gi, '');
+// Aggressively clean HTML string
+function aggressiveCleanHtml(html: string): string {
+  if (!html) return html;
   
-  // Also remove any instances of "drag" repeated multiple times
-  cleanedHtml = cleanedHtml.replace(/drag{2,}/gi, '');
+  // First, try to identify and remove any hidden elements that might contain drag text
+  let cleanedHtml = html.replace(/<[^>]*style="[^"]*display:\s*none[^"]*"[^>]*>.*?<\/[^>]*>/gi, '');
   
-  // Remove any standalone "drag" words (with word boundaries)
-  cleanedHtml = cleanedHtml.replace(/\bdrag\b/gi, '');
+  // Remove any elements with drag-related attributes or classes
+  cleanedHtml = cleanedHtml.replace(/<[^>]*(?:draggable|data-drag|class="[^"]*drag[^"]*")[^>]*>.*?<\/[^>]*>/gi, '');
   
-  // Remove any elements with drag-related attributes
-  cleanedHtml = cleanedHtml.replace(/<[^>]*draggable[^>]*>.*?<\/[^>]*>/gi, '');
-  cleanedHtml = cleanedHtml.replace(/<[^>]*data-drag[^>]*>.*?<\/[^>]*>/gi, '');
-  
-  // Remove any hidden elements that might contain drag text
-  cleanedHtml = cleanedHtml.replace(/<[^>]*style="[^"]*display:\s*none[^"]*"[^>]*>.*?<\/[^>]*>/gi, '');
+  // Remove any instances of "drag" text (with variations)
+  cleanedHtml = cleanedHtml.replace(/drag+/gi, '');
+  cleanedHtml = cleanedHtml.replace(/dr+a+g+/gi, '');
   
   return cleanedHtml;
 }
 
-// Process text nodes to remove drag-related content
-function cleanTextContent(text: string | null): string | null {
-  if (!text) return text;
+// Recursively clean a fragment to remove any drag text
+function cleanFragment(fragment: any): any {
+  if (!fragment) return fragment;
   
-  // Remove "dragdrag" specifically (the exact pattern reported)
-  let cleanedText = text.replace(/dragdrag/gi, '');
+  // If it's an array, clean each item
+  if (Array.isArray(fragment)) {
+    return fragment.map(cleanFragment);
+  }
   
-  // Remove any instances of "drag" repeated multiple times
-  cleanedText = cleanedText.replace(/drag{2,}/gi, '');
+  // If it's a text node
+  if (Text.isText(fragment)) {
+    if (fragment.text && containsDragText(fragment.text)) {
+      return { ...fragment, text: fragment.text.replace(/dr+a+g+/gi, '') };
+    }
+    return fragment;
+  }
   
-  // Remove any standalone "drag" words
-  cleanedText = cleanedText.replace(/\bdrag\b/gi, '');
+  // If it's an element node
+  if (Element.isElement(fragment)) {
+    return {
+      ...fragment,
+      children: Array.isArray(fragment.children) 
+        ? fragment.children.map(cleanFragment) 
+        : fragment.children
+    };
+  }
   
-  return cleanedText;
+  return fragment;
 }
 
 const deserialize = (
   el: ChildNode,
   parentNodeName?: string
 ): string | null | Descendant | (string | null | { text: string } | Descendant | Node)[] => {
+  // Handle text nodes
   if (el.nodeType === 3) {
-    // Text node - clean any drag-related content
-    const cleanedText = cleanTextContent(el.textContent);
+    const text = el.textContent;
     
-    // If the text was only drag-related content and is now empty, return empty text
-    if (!cleanedText || cleanedText.trim() === '') {
-      return { text: '' };
+    // Aggressively filter out any drag-related text
+    if (containsDragText(text)) {
+      return { text: text ? text.replace(/dr+a+g+/gi, '') : '' };
     }
     
-    return cleanedText;
-  } else if (el.nodeType !== 1) {
+    return text;
+  } 
+  // Handle non-element nodes
+  else if (el.nodeType !== 1) {
     return null;
-  } else if (el.nodeName === 'BR') {
+  } 
+  // Handle BR elements
+  else if (el.nodeName === 'BR') {
     if (parentNodeName) return el.textContent;
     return jsx('element', { type: 'paragraph' }, [{ text: '' }]);
   }
   
-  // Check for drag-related elements and skip them
-  if (hasDragContent(el as HTMLElement)) {
-    return { text: '' }; // Replace drag elements with empty text
+  // Skip elements with drag-related content
+  const htmlEl = el as HTMLElement;
+  if (
+    htmlEl.getAttribute('draggable') === 'true' || 
+    htmlEl.hasAttribute('data-drag') || 
+    (htmlEl.className && htmlEl.className.includes('drag')) ||
+    (htmlEl.id && htmlEl.id.includes('drag')) ||
+    (htmlEl.textContent && containsDragText(htmlEl.textContent))
+  ) {
+    // Instead of skipping entirely, replace with cleaned content
+    const cleanedText = htmlEl.textContent ? htmlEl.textContent.replace(/dr+a+g+/gi, '') : '';
+    if (cleanedText.trim() === '') {
+      return { text: '' };
+    }
+    return { text: cleanedText };
   }
   
-  const isGoogleDoc = checkIfGoogleDoc(el as HTMLElement);
+  const isGoogleDoc = checkIfGoogleDoc(htmlEl);
   const { nodeName } = el;
   let parent = el;
 
   if (nodeName === 'PRE' && el.childNodes[0] && el.childNodes[0].nodeName === 'CODE') {
     parent = el.childNodes[0];
   }
+  
   let children = Array.from(parent.childNodes)
     .map((childNode) =>
       deserialize(childNode, !isGoogleDoc ? (el.nodeName as TElementTag) : undefined)
@@ -200,7 +206,7 @@ const deserialize = (
 
   // Google Docs expresses bold/italic/underlined text with a <span> tag
   if (nodeName === 'SPAN') {
-    const attrs = getSpan(el as HTMLElement);
+    const attrs = getSpan(htmlEl);
 
     if (attrs && Object.keys(attrs).length > 0) {
       return children.map((child) => jsx('text', attrs, child));
@@ -208,7 +214,7 @@ const deserialize = (
   }
 
   if (ELEMENT_TAGS[nodeName as TElementTag]) {
-    const attrs = ELEMENT_TAGS[nodeName as TElementTag](el as HTMLElement);
+    const attrs = ELEMENT_TAGS[nodeName as TElementTag](htmlEl);
     if (children) {
       return jsx('element', attrs, children);
     }
@@ -236,83 +242,83 @@ export function withHtml(editor: Editor) {
 
   (editor as CustomEditor).insertData = (data) => {
     try {
+      // Get HTML and text from clipboard
       const html = data.getData('text/html');
       const text = data.getData('text/plain');
       
-      // Log clipboard data for debugging
+      // Log for debugging
       console.log('Clipboard HTML:', html);
       console.log('Clipboard Text:', text);
       
-      // Check specifically for "dragdrag" pattern in the clipboard data
-      const hasDragDrag = (html && html.includes('dragdrag')) || (text && text.includes('dragdrag'));
-      if (hasDragDrag) {
-        console.log('Found "dragdrag" pattern in clipboard data');
+      // Check for drag text
+      const hasDragText = (html && containsDragText(html)) || (text && containsDragText(text));
+      if (hasDragText) {
+        console.log('Found drag-related content in clipboard');
       }
       
+      // Process HTML if available
       if (html) {
-        // Clean up any drag-related content from the HTML
-        const cleanHtml = cleanHtmlString(html);
+        // Aggressively clean the HTML
+        const cleanHtml = aggressiveCleanHtml(html);
         
         try {
+          // Parse the cleaned HTML
           const parsed = new DOMParser().parseFromString(cleanHtml, 'text/html');
           
-          // Additional check: remove any text nodes with "dragdrag" from the parsed DOM
-          const textNodes = parsed.querySelectorAll('*');
-          textNodes.forEach(node => {
-            if (node.textContent && node.textContent.includes('dragdrag')) {
-              node.textContent = node.textContent.replace(/dragdrag/g, '');
+          // Additional cleaning of the parsed DOM
+          const allElements = parsed.querySelectorAll('*');
+          allElements.forEach(node => {
+            if (node.textContent && containsDragText(node.textContent)) {
+              node.textContent = node.textContent.replace(/dr+a+g+/gi, '');
             }
           });
           
-          const fragment = deserialize(parsed.body);
+          // Deserialize to Slate fragment
+          let fragment = deserialize(parsed.body) as Node[];
           
-          // Final check: ensure no "dragdrag" in the fragment
+          // Final cleaning of the fragment
+          fragment = cleanFragment(fragment);
+          
+          // Check if fragment still contains drag text
           const fragmentStr = JSON.stringify(fragment);
-          if (fragmentStr.includes('dragdrag')) {
-            console.log('Warning: "dragdrag" still present in fragment after cleaning');
+          if (fragmentStr.includes('drag')) {
+            console.warn('Warning: Fragment still contains drag text after cleaning');
+            // Additional aggressive cleaning
+            fragment = JSON.parse(fragmentStr.replace(/dr+a+g+/gi, ''));
           }
           
-          Transforms.insertFragment(editor, fragment as Node[]);
+          // Insert the cleaned fragment
+          Transforms.insertFragment(editor, fragment);
         } catch (error) {
-          console.error('Error parsing HTML:', error);
-          // Fallback to plain text if HTML parsing fails
+          console.error('Error processing HTML:', error);
+          
+          // Fallback to plain text
           if (text) {
-            const cleanedText = cleanTextContent(text);
-            if (cleanedText) {
-              Transforms.insertText(editor, cleanedText);
-            }
+            const cleanedText = text.replace(/dr+a+g+/gi, '');
+            Transforms.insertText(editor, cleanedText);
           }
         }
-        
-        // Clear any liveText that might have been set during drag operations
-        if ((editor as any).setLiveText) {
-          (editor as any).setLiveText('');
-        }
-        
-        return;
-      } else if (text) {
-        // If there's no HTML but there is text, clean it and insert
-        const cleanedText = cleanTextContent(text);
-        if (cleanedText) {
-          Transforms.insertText(editor, cleanedText);
-          
-          // Clear any liveText
-          if ((editor as any).setLiveText) {
-            (editor as any).setLiveText('');
-          }
-          
-          return;
-        }
+      } 
+      // If no HTML, use plain text
+      else if (text) {
+        const cleanedText = text.replace(/dr+a+g+/gi, '');
+        Transforms.insertText(editor, cleanedText);
+      }
+      // Default fallback
+      else {
+        insertData(data);
       }
       
-      // Default fallback
-      insertData(data);
+      // Always clear liveText
+      if ((editor as any).setLiveText) {
+        (editor as any).setLiveText('');
+      }
     } catch (error) {
       console.error('Error in insertData:', error);
-      // Ensure we don't break the editor if something goes wrong
+      // Ensure we don't break the editor
       insertData(data);
     } finally {
-      // Always clear liveText to be safe
+      // Always clear liveText
       if ((editor as any).setLiveText) {
         (editor as any).setLiveText('');
       }

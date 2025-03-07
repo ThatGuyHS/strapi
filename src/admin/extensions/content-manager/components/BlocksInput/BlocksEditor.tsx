@@ -130,9 +130,71 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
     );
     const [liveText, setLiveText] = React.useState('');
     const ariaDescriptionId = React.useId();
+    const editorRef = React.useRef<HTMLElement | null>(null);
 
     // Attach setLiveText to editor for use in plugins
     (editor as any).setLiveText = setLiveText;
+
+    // DIRECT DOM MANIPULATION: Add a global copy event listener
+    React.useEffect(() => {
+      // Function to handle copy events at the document level
+      const handleGlobalCopy = (e: ClipboardEvent) => {
+        // Only intercept if we're copying from our editor
+        if (document.activeElement && editorRef.current?.contains(document.activeElement)) {
+          console.log('Global copy event intercepted');
+          
+          // Prevent the default copy behavior
+          e.stopPropagation();
+          
+          // Get the current selection
+          const selection = window.getSelection();
+          if (!selection || selection.rangeCount === 0) return;
+          
+          // Get the selected text
+          const selectedText = selection.toString();
+          console.log('Selected text:', selectedText);
+          
+          // Check if it contains drag text
+          if (selectedText.match(/drag/i) || selectedText.match(/dr+a+g+/i)) {
+            console.log('Selected text contains drag text, cleaning...');
+            
+            // Clean the text
+            const cleanedText = selectedText
+              .replace(/drag/gi, '')
+              .replace(/dr+a+g+/gi, '');
+            
+            // Set the cleaned text to the clipboard
+            if (e.clipboardData) {
+              e.preventDefault(); // Prevent the default copy
+              e.clipboardData.setData('text/plain', cleanedText);
+              
+              // Also try to set HTML
+              const cleanedHtml = `<div>${cleanedText}</div>`;
+              e.clipboardData.setData('text/html', cleanedHtml);
+              
+              console.log('Set cleaned text to clipboard:', cleanedText);
+            }
+          }
+        }
+      };
+      
+      // Add the event listener
+      document.addEventListener('copy', handleGlobalCopy, true); // Use capture phase
+      
+      // Clean up
+      return () => {
+        document.removeEventListener('copy', handleGlobalCopy, true);
+      };
+    }, []);
+
+    // Store a reference to the editor DOM node
+    React.useEffect(() => {
+      try {
+        editorRef.current = ReactEditor.toDOMNode(editor, editor);
+      } catch (error) {
+        console.error('Could not get editor DOM node:', error);
+      }
+    }, [editor]);
 
     // Handle drag events to clear liveText
     const handleDragEnd = React.useCallback(() => {
@@ -229,12 +291,15 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
     }, [editor]);
 
     const handleChange = (newValue: Descendant[]) => {
+      // Check for and remove any drag text in the editor content
+      const cleanedValue = cleanEditorContent(newValue);
+      
       // Handle copy/paste of blocks
       if (
         editor.operations.some((op) => op.type === 'insert_node' && Element.isElement(op.node)) ||
         editor.operations.some((op) => op.type === 'remove_node' && Element.isElement(op.node))
       ) {
-        onChange(newValue);
+        onChange(cleanedValue);
         // Clear any potential drag text after paste operations
         setTimeout(() => {
           setLiveText('');
@@ -246,7 +311,7 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
         editor.operations.some((op) => op.type === 'insert_text') ||
         editor.operations.some((op) => op.type === 'remove_text')
       ) {
-        onChange(newValue);
+        onChange(cleanedValue);
         // Also clear liveText after text changes
         setTimeout(() => {
           setLiveText('');
@@ -255,8 +320,45 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
 
       // Handle changes in node properties
       if (editor.operations.some((op) => op.type === 'set_node')) {
-        onChange(newValue);
+        onChange(cleanedValue);
       }
+    };
+    
+    // Function to clean the editor content
+    const cleanEditorContent = (content: Descendant[]): Descendant[] => {
+      // Helper function to check if text contains drag-related content
+      const containsDragText = (text: string): boolean => {
+        return text.match(/drag/i) !== null || text.match(/dr+a+g+/i) !== null;
+      };
+      
+      // Helper function to clean text
+      const cleanText = (text: string): string => {
+        return text.replace(/drag/gi, '').replace(/dr+a+g+/gi, '');
+      };
+      
+      // Recursively clean the content
+      const cleanNode = (node: any): any => {
+        // If it's a text node
+        if (node.text !== undefined) {
+          if (containsDragText(node.text)) {
+            return { ...node, text: cleanText(node.text) };
+          }
+          return node;
+        }
+        
+        // If it's an element node with children
+        if (node.children) {
+          return {
+            ...node,
+            children: node.children.map(cleanNode)
+          };
+        }
+        
+        return node;
+      };
+      
+      // Clean each node in the content
+      return content.map(cleanNode);
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
