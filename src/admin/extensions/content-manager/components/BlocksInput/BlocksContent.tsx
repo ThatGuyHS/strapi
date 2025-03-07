@@ -1,6 +1,17 @@
 import * as React from 'react';
 import { useSlate } from 'slate-react';
 
+// Helper function to clean drag-related content from text
+function cleanDragText(text: string): string {
+  // Remove any instances of "drag" repeated multiple times
+  let cleanedText = text.replace(/drag{2,}/gi, '');
+  
+  // Remove any standalone "drag" words
+  cleanedText = cleanedText.replace(/\bdrag\b/gi, '');
+  
+  return cleanedText;
+}
+
 interface BlocksContentProps {
   blocks?: any[];
   readOnly?: boolean;
@@ -11,6 +22,8 @@ interface BlocksContentProps {
   onDragEnd?: () => void;
   onDrop?: () => void;
   onPaste?: () => void;
+  onCopy?: (event: React.ClipboardEvent) => void;
+  onCut?: (event: React.ClipboardEvent) => void;
   setLiveText?: (text: string) => void;
   setErroredBlocks?: (blocks: any[]) => void;
   ariaDescriptionId?: string;
@@ -28,6 +41,8 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
   onDragEnd,
   onDrop,
   onPaste,
+  onCopy,
+  onCut,
   onKeyDown,
   setLiveText,
   disabled,
@@ -37,7 +52,7 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
   const editor = useSlate();
 
   // Handle drag events to clear liveText
-  const handleDragEnd = React.useCallback(() => {
+  const handleDragEnd = React.useCallback((e: React.DragEvent) => {
     if (onDragEnd) {
       onDragEnd();
     }
@@ -47,7 +62,7 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
     }
   }, [onDragEnd, setLiveText]);
 
-  const handleDrop = React.useCallback(() => {
+  const handleDrop = React.useCallback((e: React.DragEvent) => {
     if (onDrop) {
       onDrop();
     }
@@ -59,10 +74,14 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
     }
   }, [onDrop, setLiveText]);
 
-  const handlePaste = React.useCallback(() => {
+  const handlePaste = React.useCallback((e: React.ClipboardEvent) => {
+    // Log clipboard data for debugging
+    console.log('Paste event in BlocksContent');
+    
     if (onPaste) {
       onPaste();
     }
+    
     // Also clear liveText directly
     if (setLiveText) {
       setTimeout(() => {
@@ -70,6 +89,39 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
       }, 100);
     }
   }, [onPaste, setLiveText]);
+
+  // Handle copy event to clean clipboard data
+  const handleCopy = React.useCallback((e: React.ClipboardEvent) => {
+    // Log for debugging
+    console.log('Copy event in BlocksContent');
+    
+    if (onCopy) {
+      onCopy(e);
+    }
+    
+    // Clear liveText
+    if (setLiveText) {
+      setLiveText('');
+    }
+    
+    // We can't modify the clipboard data directly in React's synthetic events
+    // But we can clear liveText to prevent it from being included
+  }, [onCopy, setLiveText]);
+
+  // Handle cut event similarly to copy
+  const handleCut = React.useCallback((e: React.ClipboardEvent) => {
+    // Log for debugging
+    console.log('Cut event in BlocksContent');
+    
+    if (onCut) {
+      onCut(e);
+    }
+    
+    // Clear liveText
+    if (setLiveText) {
+      setLiveText('');
+    }
+  }, [onCut, setLiveText]);
 
   return (
     <div
@@ -81,6 +133,8 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
       onDragEnd={handleDragEnd}
       onDrop={handleDrop}
       onPaste={handlePaste}
+      onCopy={handleCopy}
+      onCut={handleCut}
       onKeyDown={onKeyDown}
       aria-describedby={ariaDescriptionId}
       style={{ minHeight: '100px' }}

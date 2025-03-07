@@ -94,7 +94,42 @@ function hasDragContent(el: HTMLElement): boolean {
     return true;
   }
   
+  // Check for drag-related text content
+  if (el.textContent && 
+      (el.textContent.toLowerCase().includes('dragdrag') || 
+       el.textContent.toLowerCase() === 'drag')) {
+    return true;
+  }
+  
   return false;
+}
+
+// Clean HTML string by removing drag-related content
+function cleanHtmlString(html: string): string {
+  // Remove any instances of "drag" repeated multiple times
+  let cleanedHtml = html.replace(/drag{2,}/gi, '');
+  
+  // Remove any standalone "drag" words (with word boundaries)
+  cleanedHtml = cleanedHtml.replace(/\bdrag\b/gi, '');
+  
+  // Remove any elements with drag-related attributes (this is a simple approach and might not catch everything)
+  cleanedHtml = cleanedHtml.replace(/<[^>]*draggable[^>]*>.*?<\/[^>]*>/gi, '');
+  cleanedHtml = cleanedHtml.replace(/<[^>]*data-drag[^>]*>.*?<\/[^>]*>/gi, '');
+  
+  return cleanedHtml;
+}
+
+// Process text nodes to remove drag-related content
+function cleanTextContent(text: string | null): string | null {
+  if (!text) return text;
+  
+  // Remove any instances of "drag" repeated multiple times
+  let cleanedText = text.replace(/drag{2,}/gi, '');
+  
+  // Remove any standalone "drag" words
+  cleanedText = cleanedText.replace(/\bdrag\b/gi, '');
+  
+  return cleanedText;
 }
 
 const deserialize = (
@@ -102,15 +137,15 @@ const deserialize = (
   parentNodeName?: string
 ): string | null | Descendant | (string | null | { text: string } | Descendant | Node)[] => {
   if (el.nodeType === 3) {
-    // Text node - check if it contains only "drag" text
-    const text = el.textContent || '';
-    if (text.trim().toLowerCase() === 'drag' || 
-        text.trim().toLowerCase() === 'dragdrag' || 
-        text.trim().toLowerCase() === 'dragdragdrag' || 
-        text.trim().toLowerCase() === 'dragdragdragdrag') {
-      return { text: '' }; // Replace drag text with empty text
+    // Text node - clean any drag-related content
+    const cleanedText = cleanTextContent(el.textContent);
+    
+    // If the text was only drag-related content and is now empty, return empty text
+    if (!cleanedText || cleanedText.trim() === '') {
+      return { text: '' };
     }
-    return el.textContent;
+    
+    return cleanedText;
   } else if (el.nodeType !== 1) {
     return null;
   } else if (el.nodeName === 'BR') {
@@ -192,23 +227,57 @@ export function withHtml(editor: Editor) {
 
   (editor as CustomEditor).insertData = (data) => {
     const html = data.getData('text/html');
+    const text = data.getData('text/plain');
+    
+    // Log clipboard data for debugging (remove in production)
+    console.log('Clipboard HTML:', html);
+    console.log('Clipboard Text:', text);
+    
     if (html) {
       // Clean up any drag-related content from the HTML
-      const cleanHtml = html.replace(/drag{2,}/gi, '');
+      const cleanHtml = cleanHtmlString(html);
       
-      const parsed = new DOMParser().parseFromString(cleanHtml, 'text/html');
-      const fragment = deserialize(parsed.body);
-      Transforms.insertFragment(editor, fragment as Node[]);
+      try {
+        const parsed = new DOMParser().parseFromString(cleanHtml, 'text/html');
+        const fragment = deserialize(parsed.body);
+        
+        // Log the fragment for debugging (remove in production)
+        console.log('Parsed Fragment:', fragment);
+        
+        Transforms.insertFragment(editor, fragment as Node[]);
+      } catch (error) {
+        console.error('Error parsing HTML:', error);
+        // Fallback to plain text if HTML parsing fails
+        if (text) {
+          const cleanedText = cleanTextContent(text);
+          if (cleanedText) {
+            Transforms.insertText(editor, cleanedText);
+          }
+        }
+      }
       
       // Clear any liveText that might have been set during drag operations
-      // Access the editor's context to reset liveText if possible
       if ((editor as any).setLiveText) {
         (editor as any).setLiveText('');
       }
       
       return;
+    } else if (text) {
+      // If there's no HTML but there is text, clean it and insert
+      const cleanedText = cleanTextContent(text);
+      if (cleanedText) {
+        Transforms.insertText(editor, cleanedText);
+        
+        // Clear any liveText
+        if ((editor as any).setLiveText) {
+          (editor as any).setLiveText('');
+        }
+        
+        return;
+      }
     }
 
+    // Default fallback
     insertData(data);
   };
 

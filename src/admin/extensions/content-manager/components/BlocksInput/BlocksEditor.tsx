@@ -23,6 +23,8 @@ interface BlocksContentProps {
   onDragEnd?: () => void;
   onDrop?: () => void;
   onPaste?: () => void;
+  onCopy?: (event: React.ClipboardEvent) => void;
+  onCut?: (event: React.ClipboardEvent) => void;
   setLiveText?: (text: string) => void;
   setErroredBlocks?: (blocks: any[]) => void;
   ariaDescriptionId?: string;
@@ -150,6 +152,60 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
       }, 100);
     }, []);
 
+    // Handle copy events to clean the clipboard data
+    const handleCopy = React.useCallback((event: React.ClipboardEvent) => {
+      // We can't directly modify the clipboard data during the copy event
+      // But we can clear liveText to prevent it from being included in future operations
+      setLiveText('');
+      
+      // Log for debugging
+      console.log('Copy event triggered in BlocksEditor');
+    }, []);
+
+    // Handle cut events similarly to copy
+    const handleCut = React.useCallback((event: React.ClipboardEvent) => {
+      setLiveText('');
+      
+      // Log for debugging
+      console.log('Cut event triggered in BlocksEditor');
+    }, []);
+
+    // Add event listeners for copy and cut events
+    React.useEffect(() => {
+      // Get the DOM node of the editor
+      let editorNode: HTMLElement | null = null;
+      try {
+        editorNode = ReactEditor.toDOMNode(editor, editor);
+      } catch (error) {
+        console.error('Could not get editor DOM node:', error);
+      }
+
+      if (editorNode) {
+        // Create DOM event handlers that can be used with addEventListener
+        const domCopyHandler = (e: ClipboardEvent) => {
+          console.log('DOM Copy event triggered');
+          setLiveText('');
+        };
+        
+        const domCutHandler = (e: ClipboardEvent) => {
+          console.log('DOM Cut event triggered');
+          setLiveText('');
+        };
+
+        // Add event listeners
+        editorNode.addEventListener('copy', domCopyHandler);
+        editorNode.addEventListener('cut', domCutHandler);
+
+        // Clean up
+        return () => {
+          editorNode?.removeEventListener('copy', domCopyHandler);
+          editorNode?.removeEventListener('cut', domCutHandler);
+        };
+      }
+      
+      return undefined;
+    }, [editor]);
+
     const handleChange = (newValue: Descendant[]) => {
       // Handle copy/paste of blocks
       if (
@@ -169,6 +225,10 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
         editor.operations.some((op) => op.type === 'remove_text')
       ) {
         onChange(newValue);
+        // Also clear liveText after text changes
+        setTimeout(() => {
+          setLiveText('');
+        }, 100);
       }
 
       // Handle changes in node properties
@@ -284,6 +344,8 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
               onDragEnd={handleDragEnd}
               onDrop={handleDrop}
               onPaste={handlePaste}
+              onCopy={handleCopy}
+              onCut={handleCut}
               setLiveText={setLiveText}
             />
           </Box>
