@@ -10,6 +10,7 @@ import { pxToRem } from '@strapi/helper-plugin';
 import { pipe } from './utils/pipe';
 import { withHtml } from './plugins/withHTML';
 import { withLinks } from './plugins/withLinks';
+import BlocksContent from './BlocksContent';
 
 // Simplified interfaces for the missing components
 interface BlocksContentProps {
@@ -19,7 +20,9 @@ interface BlocksContentProps {
   onFocus?: () => void;
   onClick?: () => void;
   onDragStart?: () => void;
+  onDragEnd?: () => void;
   onDrop?: () => void;
+  onPaste?: () => void;
   setLiveText?: (text: string) => void;
   setErroredBlocks?: (blocks: any[]) => void;
   ariaDescriptionId?: string;
@@ -30,10 +33,6 @@ interface BlocksContentProps {
 }
 
 // Simplified components
-const BlocksContent: React.FC<BlocksContentProps> = (props) => {
-  return <div>{props.children}</div>;
-};
-
 const BlocksToolbar: React.FC = () => {
   return <div></div>;
 };
@@ -128,6 +127,29 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
     const [liveText, setLiveText] = React.useState('');
     const ariaDescriptionId = React.useId();
 
+    // Attach setLiveText to editor for use in plugins
+    (editor as any).setLiveText = setLiveText;
+
+    // Handle drag events to clear liveText
+    const handleDragEnd = React.useCallback(() => {
+      setLiveText('');
+    }, []);
+
+    const handleDrop = React.useCallback(() => {
+      // Clear liveText after a short delay to ensure it's cleared after the drop operation completes
+      setTimeout(() => {
+        setLiveText('');
+      }, 100);
+    }, []);
+
+    // Handle paste events to clear any potential drag text
+    const handlePaste = React.useCallback(() => {
+      // Clear liveText after a short delay to ensure it's cleared after the paste operation completes
+      setTimeout(() => {
+        setLiveText('');
+      }, 100);
+    }, []);
+
     const handleChange = (newValue: Descendant[]) => {
       // Handle copy/paste of blocks
       if (
@@ -135,6 +157,10 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
         editor.operations.some((op) => op.type === 'remove_node' && Element.isElement(op.node))
       ) {
         onChange(newValue);
+        // Clear any potential drag text after paste operations
+        setTimeout(() => {
+          setLiveText('');
+        }, 100);
       }
 
       // Handle text changes
@@ -255,6 +281,9 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
               disabled={disabled}
               liveText={liveText}
               onKeyDown={handleKeyDown}
+              onDragEnd={handleDragEnd}
+              onDrop={handleDrop}
+              onPaste={handlePaste}
               setLiveText={setLiveText}
             />
           </Box>

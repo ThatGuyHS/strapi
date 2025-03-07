@@ -71,11 +71,45 @@ function checkIfGoogleDoc(el: HTMLElement) {
   return el.nodeName === 'B' && el.id?.startsWith('docs-internal-guid-');
 }
 
+// Check if an element has drag-related attributes or content
+function hasDragContent(el: HTMLElement): boolean {
+  // Check for drag-related attributes
+  if (el.getAttribute('draggable') === 'true' || 
+      el.hasAttribute('data-drag') || 
+      el.hasAttribute('data-draggable')) {
+    return true;
+  }
+  
+  // Check for drag-related classes
+  if (el.className && 
+      (el.className.includes('drag') || 
+       el.className.includes('draggable'))) {
+    return true;
+  }
+  
+  // Check for drag-related IDs
+  if (el.id && 
+      (el.id.includes('drag') || 
+       el.id.includes('draggable'))) {
+    return true;
+  }
+  
+  return false;
+}
+
 const deserialize = (
   el: ChildNode,
   parentNodeName?: string
 ): string | null | Descendant | (string | null | { text: string } | Descendant | Node)[] => {
   if (el.nodeType === 3) {
+    // Text node - check if it contains only "drag" text
+    const text = el.textContent || '';
+    if (text.trim().toLowerCase() === 'drag' || 
+        text.trim().toLowerCase() === 'dragdrag' || 
+        text.trim().toLowerCase() === 'dragdragdrag' || 
+        text.trim().toLowerCase() === 'dragdragdragdrag') {
+      return { text: '' }; // Replace drag text with empty text
+    }
     return el.textContent;
   } else if (el.nodeType !== 1) {
     return null;
@@ -83,6 +117,12 @@ const deserialize = (
     if (parentNodeName) return el.textContent;
     return jsx('element', { type: 'paragraph' }, [{ text: '' }]);
   }
+  
+  // Check for drag-related elements and skip them
+  if (hasDragContent(el as HTMLElement)) {
+    return { text: '' }; // Replace drag elements with empty text
+  }
+  
   const isGoogleDoc = checkIfGoogleDoc(el as HTMLElement);
   const { nodeName } = el;
   let parent = el;
@@ -153,9 +193,19 @@ export function withHtml(editor: Editor) {
   (editor as CustomEditor).insertData = (data) => {
     const html = data.getData('text/html');
     if (html) {
-      const parsed = new DOMParser().parseFromString(html, 'text/html');
+      // Clean up any drag-related content from the HTML
+      const cleanHtml = html.replace(/drag{2,}/gi, '');
+      
+      const parsed = new DOMParser().parseFromString(cleanHtml, 'text/html');
       const fragment = deserialize(parsed.body);
       Transforms.insertFragment(editor, fragment as Node[]);
+      
+      // Clear any liveText that might have been set during drag operations
+      // Access the editor's context to reset liveText if possible
+      if ((editor as any).setLiveText) {
+        (editor as any).setLiveText('');
+      }
+      
       return;
     }
 
