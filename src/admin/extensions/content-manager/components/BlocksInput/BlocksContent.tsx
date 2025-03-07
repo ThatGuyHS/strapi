@@ -95,6 +95,11 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
     // Log for debugging
     console.log('Copy event in BlocksContent');
     
+    // Use our custom clipboard cleaner if available
+    if ((editor as any).cleanClipboardData && e.clipboardData) {
+      (editor as any).cleanClipboardData(e.clipboardData);
+    }
+    
     if (onCopy) {
       onCopy(e);
     }
@@ -103,15 +108,17 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
     if (setLiveText) {
       setLiveText('');
     }
-    
-    // We can't modify the clipboard data directly in React's synthetic events
-    // But we can clear liveText to prevent it from being included
-  }, [onCopy, setLiveText]);
+  }, [editor, onCopy, setLiveText]);
 
   // Handle cut event similarly to copy
   const handleCut = React.useCallback((e: React.ClipboardEvent) => {
     // Log for debugging
     console.log('Cut event in BlocksContent');
+    
+    // Use our custom clipboard cleaner if available
+    if ((editor as any).cleanClipboardData && e.clipboardData) {
+      (editor as any).cleanClipboardData(e.clipboardData);
+    }
     
     if (onCut) {
       onCut(e);
@@ -121,7 +128,7 @@ export const BlocksContent: React.FC<BlocksContentProps> = ({
     if (setLiveText) {
       setLiveText('');
     }
-  }, [onCut, setLiveText]);
+  }, [editor, onCut, setLiveText]);
 
   return (
     <div

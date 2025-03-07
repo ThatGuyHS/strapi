@@ -10,6 +10,7 @@ import { pxToRem } from '@strapi/helper-plugin';
 import { pipe } from './utils/pipe';
 import { withHtml } from './plugins/withHTML';
 import { withLinks } from './plugins/withLinks';
+import { withClipboardCleaner } from './plugins/withClipboardCleaner';
 import BlocksContent from './BlocksContent';
 
 // Simplified interfaces for the missing components
@@ -123,7 +124,8 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
         withStrapiSchema,
         withReact,
         withLinks,
-        withHtml
+        withHtml,
+        withClipboardCleaner
       )(createEditor())
     );
     const [liveText, setLiveText] = React.useState('');
@@ -154,21 +156,29 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
 
     // Handle copy events to clean the clipboard data
     const handleCopy = React.useCallback((event: React.ClipboardEvent) => {
-      // We can't directly modify the clipboard data during the copy event
-      // But we can clear liveText to prevent it from being included in future operations
-      setLiveText('');
+      console.log('Copy event in BlocksEditor');
       
-      // Log for debugging
-      console.log('Copy event triggered in BlocksEditor');
-    }, []);
+      // Use our custom clipboard cleaner if available
+      if ((editor as any).cleanClipboardData && event.clipboardData) {
+        (editor as any).cleanClipboardData(event.clipboardData);
+      }
+      
+      // Clear liveText
+      setLiveText('');
+    }, [editor]);
 
     // Handle cut events similarly to copy
     const handleCut = React.useCallback((event: React.ClipboardEvent) => {
-      setLiveText('');
+      console.log('Cut event in BlocksEditor');
       
-      // Log for debugging
-      console.log('Cut event triggered in BlocksEditor');
-    }, []);
+      // Use our custom clipboard cleaner if available
+      if ((editor as any).cleanClipboardData && event.clipboardData) {
+        (editor as any).cleanClipboardData(event.clipboardData);
+      }
+      
+      // Clear liveText
+      setLiveText('');
+    }, [editor]);
 
     // Add event listeners for copy and cut events
     React.useEffect(() => {
@@ -184,11 +194,23 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
         // Create DOM event handlers that can be used with addEventListener
         const domCopyHandler = (e: ClipboardEvent) => {
           console.log('DOM Copy event triggered');
+          
+          // Use our custom clipboard cleaner if available
+          if ((editor as any).cleanClipboardData && e.clipboardData) {
+            (editor as any).cleanClipboardData(e.clipboardData);
+          }
+          
           setLiveText('');
         };
         
         const domCutHandler = (e: ClipboardEvent) => {
           console.log('DOM Cut event triggered');
+          
+          // Use our custom clipboard cleaner if available
+          if ((editor as any).cleanClipboardData && e.clipboardData) {
+            (editor as any).cleanClipboardData(e.clipboardData);
+          }
+          
           setLiveText('');
         };
 
