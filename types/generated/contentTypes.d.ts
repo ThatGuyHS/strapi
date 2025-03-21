@@ -896,7 +896,7 @@ export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
     styrelsen_titel: Attribute.String;
     sektion_1_text: Attribute.Blocks;
     sektion_2_text: Attribute.Blocks;
-    stadgar: Attribute.Component<'stadgar.stadgar'>;
+    Annat: Attribute.Component<'annat.annat', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

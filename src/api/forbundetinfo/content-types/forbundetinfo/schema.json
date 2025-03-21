@@ -86,10 +86,10 @@
     "sektion_2_text": {
       "type": "blocks"
     },
-    "stadgar": {
+    "Annat": {
       "type": "component",
-      "repeatable": false,
-      "component": "stadgar.stadgar"
+      "repeatable": true,
+      "component": "annat.annat"
     }
   }
 }

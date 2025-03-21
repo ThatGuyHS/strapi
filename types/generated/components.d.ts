@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface AnnatAnnat extends Schema.Component {
+  collectionName: 'components_annat_annats';
+  info: {
+    displayName: 'Annat';
+  };
+  attributes: {
+    namn: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface DropdownItemNavigation extends Schema.Component {
   collectionName: 'components_dropdown_item_navigations';
   info: {
@@ -186,7 +197,8 @@ export interface SektionstextSektionstext extends Schema.Component {
 export interface StadgarStadgar extends Schema.Component {
   collectionName: 'components_stadgar_stadgars';
   info: {
-    displayName: 'stadgar';
+    displayName: 'Annat';
+    description: '';
   };
   attributes: {
     namn: Attribute.String;
@@ -218,6 +230,7 @@ export interface UrlUrlSvenskesportSe extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'annat.annat': AnnatAnnat;
       'dropdown-item.navigation': DropdownItemNavigation;
       'handling.arsmoeteshandling': HandlingArsmoeteshandling;
       'kansli.member': KansliMember;
