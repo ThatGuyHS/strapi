@@ -183,6 +183,17 @@ export interface SektionstextSektionstext extends Schema.Component {
   };
 }
 
+export interface StadgarStadgar extends Schema.Component {
+  collectionName: 'components_stadgar_stadgars';
+  info: {
+    displayName: 'stadgar';
+  };
+  attributes: {
+    namn: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface TitelTitel extends Schema.Component {
   collectionName: 'components_titel_titels';
   info: {
@@ -222,6 +233,7 @@ declare module '@strapi/types' {
       'sektion4bild.sektion4bild': Sektion4BildSektion4Bild;
       'sektionstext.sektion-2-text': SektionstextSektion2Text;
       'sektionstext.sektionstext': SektionstextSektionstext;
+      'stadgar.stadgar': StadgarStadgar;
       'titel.titel': TitelTitel;
       'url.url-svenskesport-se': UrlUrlSvenskesportSe;
     }

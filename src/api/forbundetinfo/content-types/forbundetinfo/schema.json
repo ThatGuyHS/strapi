@@ -85,6 +85,11 @@
     },
     "sektion_2_text": {
       "type": "blocks"
+    },
+    "stadgar": {
+      "type": "component",
+      "repeatable": false,
+      "component": "stadgar.stadgar"
     }
   }
 }

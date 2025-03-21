@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_stadgar_stadgars",
+  "info": {
+    "displayName": "stadgar"
+  },
+  "options": {},
+  "attributes": {
+    "namn": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
