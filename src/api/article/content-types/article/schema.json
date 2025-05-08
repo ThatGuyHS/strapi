@@ -66,6 +66,42 @@
     },
     "avslutatProjekt": {
       "type": "boolean"
+    },
+    "videoembed": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    },
+    "videoembedplacering": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "sektion1",
+        "sektion2"
+      ]
+    },
+    "videoembed2": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    },
+    "videoembedplacering2": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "sektion1",
+        "sektion2"
+      ]
+    },
+    "videoembed3": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    },
+    "videoembedplacering3": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "sektion1",
+        "sektion2"
+      ]
     }
   }
 }

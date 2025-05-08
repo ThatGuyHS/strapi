@@ -19,6 +19,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^5.3.4",
     "slate-hyperscript": "^0.100.0",
+    "strapi-plugin-oembed": "^1.2.1",
     "strapi-plugin-populate-deep": "^3.0.1",
     "strapi-plugin-slate": "^0.1.0",
     "styled-components": "^5.3.11"

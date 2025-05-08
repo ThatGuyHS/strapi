@@ -813,6 +813,18 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     sektion_1_text: Attribute.Blocks;
     sektion_2_text: Attribute.Blocks;
     avslutatProjekt: Attribute.Boolean;
+    videoembed: Attribute.Text & Attribute.CustomField<'plugin::oembed.oembed'>;
+    videoembedplacering: Attribute.Enumeration<['top', 'sektion1', 'sektion2']>;
+    videoembed2: Attribute.Text &
+      Attribute.CustomField<'plugin::oembed.oembed'>;
+    videoembedplacering2: Attribute.Enumeration<
+      ['top', 'sektion1', 'sektion2']
+    >;
+    videoembed3: Attribute.Text &
+      Attribute.CustomField<'plugin::oembed.oembed'>;
+    videoembedplacering3: Attribute.Enumeration<
+      ['top', 'sektion1', 'sektion2']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1360,6 +1372,25 @@ export interface ApiSidaSida extends Schema.CollectionType {
     sektion_4_text: Attribute.Blocks;
     sektion_4_bild: Attribute.Media;
     sektion_1_bild: Attribute.Media;
+    videoembed: Attribute.Text & Attribute.CustomField<'plugin::oembed.oembed'>;
+    videoembedplacering: Attribute.Enumeration<
+      ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
+    >;
+    videoembed2: Attribute.Text &
+      Attribute.CustomField<'plugin::oembed.oembed'>;
+    videoembedplacering2: Attribute.Enumeration<
+      ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
+    >;
+    videoembed3: Attribute.Text &
+      Attribute.CustomField<'plugin::oembed.oembed'>;
+    videoembedplacering3: Attribute.Enumeration<
+      ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
+    >;
+    videoembed4: Attribute.Text &
+      Attribute.CustomField<'plugin::oembed.oembed'>;
+    videoembedplacering4: Attribute.Enumeration<
+      ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

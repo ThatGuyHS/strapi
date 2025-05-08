@@ -26,4 +26,7 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  oembed: {
+    enabled: true,
+  },
 });
