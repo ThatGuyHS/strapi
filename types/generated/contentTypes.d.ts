@@ -826,6 +826,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       ['top', 'sektion1', 'sektion2']
     >;
     sektion_1_bild: Attribute.Media;
+    Cta: Attribute.Component<'cta.button', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

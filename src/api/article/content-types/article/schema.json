@@ -104,14 +104,20 @@
       ]
     },
     "sektion_1_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "Cta": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cta.button"
     }
   }
 }

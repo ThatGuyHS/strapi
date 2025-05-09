@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_cta_buttons",
+  "info": {
+    "displayName": "CTA Button",
+    "description": "Reusable call-to-action button component"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    }
+  }
+} 
