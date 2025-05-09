@@ -825,6 +825,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     videoembedplacering3: Attribute.Enumeration<
       ['top', 'sektion1', 'sektion2']
     >;
+    sektion_1_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

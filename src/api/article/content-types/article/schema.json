@@ -102,6 +102,16 @@
         "sektion1",
         "sektion2"
       ]
+    },
+    "sektion_1_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
