@@ -830,6 +830,10 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     ctasektion1right: Attribute.Component<'cta.cta'>;
     ctasektion2left: Attribute.Component<'cta.cta'>;
     ctasektion2right: Attribute.Component<'cta.cta'>;
+    sektion_3_text: Attribute.Blocks;
+    sektion_3_bild: Attribute.Media;
+    sektion_4_text: Attribute.Blocks;
+    sektion_4_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

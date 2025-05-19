@@ -133,6 +133,32 @@
       "type": "component",
       "repeatable": false,
       "component": "cta.cta"
+    },
+    "sektion_3_text": {
+      "type": "blocks"
+    },
+    "sektion_3_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "sektion_4_text": {
+      "type": "blocks"
+    },
+    "sektion_4_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
