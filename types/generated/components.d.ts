@@ -11,18 +11,6 @@ export interface AnnatAnnat extends Schema.Component {
   };
 }
 
-export interface CtaButton extends Schema.Component {
-  collectionName: 'components_cta_buttons';
-  info: {
-    displayName: 'CTA Button';
-    description: 'Reusable call-to-action button component';
-  };
-  attributes: {
-    text: Attribute.String & Attribute.Required;
-    link: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface DropdownItemNavigation extends Schema.Component {
   collectionName: 'components_dropdown_item_navigations';
   info: {
@@ -243,7 +231,6 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'annat.annat': AnnatAnnat;
-      'cta.button': CtaButton;
       'dropdown-item.navigation': DropdownItemNavigation;
       'handling.arsmoeteshandling': HandlingArsmoeteshandling;
       'kansli.member': KansliMember;
