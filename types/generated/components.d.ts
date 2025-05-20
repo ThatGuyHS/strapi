@@ -11,6 +11,17 @@ export interface AnnatAnnat extends Schema.Component {
   };
 }
 
+export interface CtaCta extends Schema.Component {
+  collectionName: 'components_cta_ctas';
+  info: {
+    displayName: 'cta';
+  };
+  attributes: {
+    ctatext: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface DropdownItemNavigation extends Schema.Component {
   collectionName: 'components_dropdown_item_navigations';
   info: {
@@ -231,6 +242,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'annat.annat': AnnatAnnat;
+      'cta.cta': CtaCta;
       'dropdown-item.navigation': DropdownItemNavigation;
       'handling.arsmoeteshandling': HandlingArsmoeteshandling;
       'kansli.member': KansliMember;

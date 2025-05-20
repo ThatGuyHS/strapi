@@ -104,14 +104,35 @@
       ]
     },
     "sektion_1_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "ctasektion1left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion1right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion2left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion2right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
     }
   }
 }
