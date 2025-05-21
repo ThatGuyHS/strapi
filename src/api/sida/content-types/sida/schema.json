@@ -151,6 +151,46 @@
         "sektion3",
         "sektion4"
       ]
+    },
+    "ctasektion1left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion1right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion2left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion2right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion3left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion3right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion4left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion4right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
     }
   }
 }

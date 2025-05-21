@@ -1396,6 +1396,14 @@ export interface ApiSidaSida extends Schema.CollectionType {
     videoembedplacering4: Attribute.Enumeration<
       ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
     >;
+    ctasektion1left: Attribute.Component<'cta.cta'>;
+    ctasektion1right: Attribute.Component<'cta.cta'>;
+    ctasektion2left: Attribute.Component<'cta.cta'>;
+    ctasektion2right: Attribute.Component<'cta.cta'>;
+    ctasektion3left: Attribute.Component<'cta.cta'>;
+    ctasektion3right: Attribute.Component<'cta.cta'>;
+    ctasektion4left: Attribute.Component<'cta.cta'>;
+    ctasektion4right: Attribute.Component<'cta.cta'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
