@@ -1404,6 +1404,8 @@ export interface ApiSidaSida extends Schema.CollectionType {
     ctasektion3right: Attribute.Component<'cta.cta'>;
     ctasektion4left: Attribute.Component<'cta.cta'>;
     ctasektion4right: Attribute.Component<'cta.cta'>;
+    sektion_1_titel: Attribute.String;
+    sektion_4_titel: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
