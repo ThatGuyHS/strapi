@@ -197,6 +197,38 @@
     },
     "sektion_4_titel": {
       "type": "string"
+    },
+    "sektion_5_titel": {
+      "type": "string"
+    },
+    "sektion_5_text": {
+      "type": "blocks"
+    },
+    "sektion_6_titel": {
+      "type": "string"
+    },
+    "sektion_6_text": {
+      "type": "blocks"
+    },
+    "sektion_5_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "sektion_6_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
