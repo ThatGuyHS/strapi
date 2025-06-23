@@ -9,6 +9,8 @@ This example deploys self-hosted version of [Strapi](https://strapi.io/). Intern
 - Strapi
 - Postgres
 
+.....
+
 ## 💁‍♀️ How to use
 
 - Click the Railway button 👆
