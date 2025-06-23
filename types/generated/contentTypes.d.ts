@@ -918,6 +918,7 @@ export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
     sektion_1_text: Attribute.Blocks;
     sektion_2_text: Attribute.Blocks;
     Annat: Attribute.Component<'annat.annat', true>;
+    fortroendevald: Attribute.Component<'fortroendevald.fortroendevald', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

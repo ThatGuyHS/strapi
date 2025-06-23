@@ -41,6 +41,19 @@ export interface DropdownItemNavigation extends Schema.Component {
   };
 }
 
+export interface FortroendevaldFortroendevald extends Schema.Component {
+  collectionName: 'components_fortroendevald_fortroendevalds';
+  info: {
+    displayName: 'fortroendevald';
+  };
+  attributes: {
+    fornamn: Attribute.String;
+    efternamn: Attribute.String;
+    profilbild: Attribute.Media;
+    roll: Attribute.String;
+  };
+}
+
 export interface HandlingArsmoeteshandling extends Schema.Component {
   collectionName: 'components_handling_arsmoeteshandlings';
   info: {
@@ -244,6 +257,7 @@ declare module '@strapi/types' {
       'annat.annat': AnnatAnnat;
       'cta.cta': CtaCta;
       'dropdown-item.navigation': DropdownItemNavigation;
+      'fortroendevald.fortroendevald': FortroendevaldFortroendevald;
       'handling.arsmoeteshandling': HandlingArsmoeteshandling;
       'kansli.member': KansliMember;
       'landslag-resultat.resultat': LandslagResultatResultat;

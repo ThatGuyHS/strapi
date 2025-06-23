@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_fortroendevald_fortroendevalds",
+  "info": {
+    "displayName": "fortroendevald"
+  },
+  "options": {},
+  "attributes": {
+    "fornamn": {
+      "type": "string"
+    },
+    "efternamn": {
+      "type": "string"
+    },
+    "profilbild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "roll": {
+      "type": "string"
+    }
+  }
+}

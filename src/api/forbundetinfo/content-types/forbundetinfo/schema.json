@@ -90,6 +90,12 @@
       "type": "component",
       "repeatable": true,
       "component": "annat.annat"
+    },
+    "fortroendevald": {
+      "displayName": "fortroendevald",
+      "type": "component",
+      "repeatable": true,
+      "component": "fortroendevald.fortroendevald"
     }
   }
 }
