@@ -834,6 +834,10 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     sektion_3_bild: Attribute.Media;
     sektion_4_text: Attribute.Blocks;
     sektion_4_bild: Attribute.Media;
+    sektion_3_titel: Attribute.String;
+    sektion_4_titel: Attribute.String;
+    sektion_3_bild_text: Attribute.String;
+    sektion_4_bild_text: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

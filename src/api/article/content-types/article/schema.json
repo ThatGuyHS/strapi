@@ -138,27 +138,41 @@
       "type": "blocks"
     },
     "sektion_3_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "sektion_4_text": {
       "type": "blocks"
     },
     "sektion_4_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "sektion_3_titel": {
+      "type": "string"
+    },
+    "sektion_4_titel": {
+      "type": "string"
+    },
+    "sektion_3_bild_text": {
+      "type": "string"
+    },
+    "sektion_4_bild_text": {
+      "type": "string"
     }
   }
 }
