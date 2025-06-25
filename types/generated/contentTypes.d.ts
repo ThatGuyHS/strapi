@@ -838,6 +838,14 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     sektion_4_titel: Attribute.String;
     sektion_3_bild_text: Attribute.String;
     sektion_4_bild_text: Attribute.String;
+    sektion_5_titel: Attribute.String;
+    sektion_5_bild_text: Attribute.String;
+    sektion_5_bild: Attribute.Media;
+    sektion_5_text: Attribute.Blocks;
+    sektion_6_titel: Attribute.String;
+    sektion_6_bild_text: Attribute.String;
+    sektion_6_bild: Attribute.Media;
+    sektion_6_text: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
