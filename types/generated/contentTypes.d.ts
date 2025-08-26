@@ -1379,7 +1379,8 @@ export interface ApiSidaSida extends Schema.CollectionType {
       [
         'titel, headerbild, leftaligned text (anbud) ',
         'headerbild (med titel), 3 stycken text (historia) ',
-        'headerbild, textstycken (bild t h\u00F6ger/v\u00E4nster)'
+        'headerbild, textstycken (bild t h\u00F6ger/v\u00E4nster)',
+        'article'
       ]
     >;
     sektion_1_text: Attribute.Blocks;

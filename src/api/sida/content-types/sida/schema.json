@@ -25,7 +25,8 @@
       "enum": [
         "titel, headerbild, leftaligned text (anbud) ",
         "headerbild (med titel), 3 stycken text (historia) ",
-        "headerbild, textstycken (bild t höger/vänster)"
+        "headerbild, textstycken (bild t höger/vänster)",
+        "article"
       ]
     },
     "sektion_1_text": {
@@ -211,24 +212,26 @@
       "type": "blocks"
     },
     "sektion_5_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "sektion_6_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }
