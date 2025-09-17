@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "arshjuls",
+  "info": {
+    "singularName": "arshjul",
+    "pluralName": "arshjuls",
+    "displayName": "arshjul"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "headerbild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "sektion_1_titel": {
+      "type": "string"
+    },
+    "sektion_1_text": {
+      "type": "blocks"
+    }
+  }
+}

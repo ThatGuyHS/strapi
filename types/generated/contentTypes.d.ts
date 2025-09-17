@@ -788,6 +788,38 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiArshjulArshjul extends Schema.CollectionType {
+  collectionName: 'arshjuls';
+  info: {
+    singularName: 'arshjul';
+    pluralName: 'arshjuls';
+    displayName: 'arshjul';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    headerbild: Attribute.Media;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::arshjul.arshjul',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::arshjul.arshjul',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
@@ -1601,6 +1633,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::arshjul.arshjul': ApiArshjulArshjul;
       'api::article.article': ApiArticleArticle;
       'api::calendarevent.calendarevent': ApiCalendareventCalendarevent;
       'api::forbundetinfo.forbundetinfo': ApiForbundetinfoForbundetinfo;
