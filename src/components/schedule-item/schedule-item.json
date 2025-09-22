@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_schedule_item_schedule_items",
+  "info": {
+    "displayName": "schedule-item",
+    "description": "Schedule item component"
+  },
+  "options": {},
+  "attributes": {
+    "time": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "location": {
+      "type": "string"
+    }
+  }
+}

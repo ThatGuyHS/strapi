@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_team_teams",
+  "info": {
+    "displayName": "team",
+    "description": "Team component"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "beskrivning": {
+      "type": "blocks"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "captain": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "game_title": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "social_media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "social-media.social-media"
+    },
+    "players": {
+      "type": "component",
+      "repeatable": true,
+      "component": "event-player.player"
+    }
+  }
+}

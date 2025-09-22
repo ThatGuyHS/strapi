@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_bracket_info_bracket_infos",
+  "info": {
+    "displayName": "bracket-info",
+    "description": "Bracket information component"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "game_title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "bracket",
+        "standings",
+        "schedule",
+        "stream"
+      ]
+    },
+    "is_live": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

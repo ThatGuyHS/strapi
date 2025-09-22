@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_social_media_social_medias",
+  "info": {
+    "displayName": "social-media",
+    "description": "Social media links component"
+  },
+  "options": {},
+  "attributes": {
+    "twitter": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "twitch": {
+      "type": "string"
+    }
+  }
+}

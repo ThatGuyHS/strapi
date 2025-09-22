@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_exhibitor_exhibitors",
+  "info": {
+    "displayName": "exhibitor",
+    "description": "Exhibitor component"
+  },
+  "options": {},
+  "attributes": {
+    "namn": {
+      "type": "string",
+      "required": true
+    },
+    "beskrivning": {
+      "type": "blocks"
+    },
+    "webbsidelank": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "booth_number": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    }
+  }
+}

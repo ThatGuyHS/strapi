@@ -932,6 +932,49 @@ export interface ApiCalendareventCalendarevent extends Schema.CollectionType {
   };
 }
 
+export interface ApiEventEvent extends Schema.CollectionType {
+  collectionName: 'events';
+  info: {
+    singularName: 'event';
+    pluralName: 'events';
+    displayName: 'Events';
+    description: 'Event content type for managing events';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.Blocks;
+    location: Attribute.String;
+    start_date: Attribute.Date & Attribute.Required;
+    end_date: Attribute.Date & Attribute.Required;
+    tournament_info: Attribute.Blocks;
+    bracket_link: Attribute.String;
+    headerbild: Attribute.Media;
+    exhibitors: Attribute.Component<'exhibitor.exhibitor', true>;
+    teams: Attribute.Component<'team.team', true>;
+    schedule_items: Attribute.Component<'schedule-item.schedule-item', true>;
+    brackets: Attribute.Component<'bracket-info.bracket-info', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiForbundetinfoForbundetinfo extends Schema.CollectionType {
   collectionName: 'forbundetinfos';
   info: {
@@ -1636,6 +1679,7 @@ declare module '@strapi/types' {
       'api::arshjul.arshjul': ApiArshjulArshjul;
       'api::article.article': ApiArticleArticle;
       'api::calendarevent.calendarevent': ApiCalendareventCalendarevent;
+      'api::event.event': ApiEventEvent;
       'api::forbundetinfo.forbundetinfo': ApiForbundetinfoForbundetinfo;
       'api::forening.forening': ApiForeningForening;
       'api::game-title.game-title': ApiGameTitleGameTitle;

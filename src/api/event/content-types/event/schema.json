@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Events",
+    "description": "Event content type for managing events"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "location": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "date",
+      "required": true
+    },
+    "end_date": {
+      "type": "date",
+      "required": true
+    },
+    "tournament_info": {
+      "type": "blocks"
+    },
+    "bracket_link": {
+      "type": "string"
+    },
+    "headerbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "exhibitors": {
+      "type": "component",
+      "repeatable": true,
+      "component": "exhibitor.exhibitor"
+    },
+    "teams": {
+      "type": "component",
+      "repeatable": true,
+      "component": "team.team"
+    },
+    "schedule_items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "schedule-item.schedule-item"
+    },
+    "brackets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "bracket-info.bracket-info"
+    }
+  }
+}
