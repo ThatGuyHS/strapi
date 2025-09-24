@@ -953,10 +953,18 @@ export interface ApiEventEvent extends Schema.CollectionType {
     tournament_info: Attribute.Blocks;
     bracket_link: Attribute.String;
     headerbild: Attribute.Media;
+    hero_logo: Attribute.Media;
+    card_1_bild: Attribute.Media;
+    card_2_bild: Attribute.Media;
+    card_3_bild: Attribute.Media;
+    text_section_title: Attribute.String;
+    text_section_content: Attribute.Blocks;
+    sponsorer: Attribute.Media;
     exhibitors: Attribute.Component<'exhibitor.exhibitor', true>;
     teams: Attribute.Component<'team.team', true>;
     schedule_items: Attribute.Component<'schedule-item.schedule-item', true>;
     brackets: Attribute.Component<'bracket-info.bracket-info', true>;
+    sektion_2_bild: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

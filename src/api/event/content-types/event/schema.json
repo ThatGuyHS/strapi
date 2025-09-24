@@ -52,6 +52,52 @@
         "audios"
       ]
     },
+    "hero_logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "card_1_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "card_2_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "card_3_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "text_section_title": {
+      "type": "string"
+    },
+    "text_section_content": {
+      "type": "blocks"
+    },
+    "sponsorer": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "exhibitors": {
       "type": "component",
       "repeatable": true,
@@ -71,6 +117,16 @@
       "type": "component",
       "repeatable": true,
       "component": "bracket-info.bracket-info"
+    },
+    "sektion_2_bild": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
