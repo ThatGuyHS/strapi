@@ -960,6 +960,10 @@ export interface ApiEventEvent extends Schema.CollectionType {
     text_section_title: Attribute.String;
     text_section_content: Attribute.Blocks;
     sponsorer: Attribute.Media;
+    turnering_hero_bild: Attribute.Media;
+    turnering_sektion_2_bild: Attribute.Media;
+    turnering_titel: Attribute.String;
+    turnering_beskrivning: Attribute.Blocks;
     exhibitors: Attribute.Component<'exhibitor.exhibitor', true>;
     teams: Attribute.Component<'team.team', true>;
     schedule_items: Attribute.Component<'schedule-item.schedule-item', true>;

@@ -98,6 +98,28 @@
         "images"
       ]
     },
+    "turnering_hero_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "turnering_sektion_2_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "turnering_titel": {
+      "type": "string"
+    },
+    "turnering_beskrivning": {
+      "type": "blocks"
+    },
     "exhibitors": {
       "type": "component",
       "repeatable": true,
