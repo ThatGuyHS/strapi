@@ -177,6 +177,12 @@
     "turnering_beskrivning": {
       "type": "blocks"
     },
+    "turnering_cta_text": {
+      "type": "blocks"
+    },
+    "turnering_cta_link": {
+      "type": "string"
+    },
     "aktitiveter_hero_bild": {
       "type": "media",
       "multiple": false,
