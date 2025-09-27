@@ -114,6 +114,20 @@
         "images"
       ]
     },
+    "turnering_sektion_4_titel": {
+      "type": "string"
+    },
+    "turnering_sektion_4_text": {
+      "type": "blocks"
+    },
+    "turnering_sektion_4_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "konferens_headerbild": {
       "type": "media",
       "multiple": false,
