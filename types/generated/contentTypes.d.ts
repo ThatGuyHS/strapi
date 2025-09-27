@@ -962,9 +962,14 @@ export interface ApiEventEvent extends Schema.CollectionType {
     sponsorer: Attribute.Media;
     turnering_hero_bild: Attribute.Media;
     turnering_sektion_2_bild: Attribute.Media;
+    konferens_headerbild: Attribute.Media;
+    konferens_sektion_2_titel: Attribute.String;
+    konferens_sektion_2_text: Attribute.Blocks;
+    konferens_sektion_2_bild: Attribute.Media;
     turnering_titel: Attribute.String;
     turnering_beskrivning: Attribute.Blocks;
     exhibitors: Attribute.Component<'exhibitor.exhibitor', true>;
+    konferens_forum: Attribute.Component<'exhibitor.exhibitor', true>;
     teams: Attribute.Component<'team.team', true>;
     schedule_items: Attribute.Component<'schedule-item.schedule-item', true>;
     brackets: Attribute.Component<'bracket-info.bracket-info', true>;

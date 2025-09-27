@@ -114,6 +114,34 @@
         "images"
       ]
     },
+    "konferens_headerbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "konferens_sektion_2_titel": {
+      "type": "string"
+    },
+    "konferens_sektion_2_text": {
+      "type": "blocks"
+    },
+    "konferens_sektion_2_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "turnering_titel": {
       "type": "string"
     },
@@ -121,6 +149,11 @@
       "type": "blocks"
     },
     "exhibitors": {
+      "type": "component",
+      "repeatable": true,
+      "component": "exhibitor.exhibitor"
+    },
+    "konferens_forum": {
       "type": "component",
       "repeatable": true,
       "component": "exhibitor.exhibitor"
