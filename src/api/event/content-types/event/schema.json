@@ -162,6 +162,14 @@
     "turnering_beskrivning": {
       "type": "blocks"
     },
+    "aktitiveter_hero_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "exhibitors": {
       "type": "component",
       "repeatable": true,
