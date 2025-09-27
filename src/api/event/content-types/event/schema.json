@@ -170,6 +170,20 @@
         "images"
       ]
     },
+    "aktiviteter_sektion_2_titel": {
+      "type": "string"
+    },
+    "aktiviteter_sektion_2_text": {
+      "type": "blocks"
+    },
+    "aktiviteter_sektion_2_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "exhibitors": {
       "type": "component",
       "repeatable": true,
