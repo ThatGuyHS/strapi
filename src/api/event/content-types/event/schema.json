@@ -260,6 +260,30 @@
     "konferens_partners_titel": {
       "type": "string"
     },
+    "praktiskinfo1_titel": {
+      "type": "string"
+    },
+    "praktiskinfo1_text": {
+      "type": "blocks"
+    },
+    "praktiskinfo2_titel": {
+      "type": "string"
+    },
+    "praktiskinfo2_text": {
+      "type": "blocks"
+    },
+    "praktiskinfo3_titel": {
+      "type": "string"
+    },
+    "praktiskinfo3_text": {
+      "type": "blocks"
+    },
+    "praktiskinfo4_titel": {
+      "type": "string"
+    },
+    "praktiskinfo4_text": {
+      "type": "blocks"
+    },
     "brackets": {
       "type": "component",
       "repeatable": true,
