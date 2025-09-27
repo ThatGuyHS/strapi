@@ -168,6 +168,11 @@
       "repeatable": true,
       "component": "schedule-item.schedule-item"
     },
+    "konferens_schedule_items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "schedule-item.schedule-item"
+    },
     "brackets": {
       "type": "component",
       "repeatable": true,
