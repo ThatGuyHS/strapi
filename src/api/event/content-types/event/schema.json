@@ -109,6 +109,9 @@
     "turnering_hero_titel": {
       "type": "string"
     },
+    "mobile_turnering_hero_titel": {
+      "type": "string"
+    },
     "turnering_sektion_2_bild": {
       "type": "media",
       "multiple": false,
@@ -143,6 +146,9 @@
       ]
     },
     "konferens_hero_titel": {
+      "type": "string"
+    },
+    "mobile_konferens_hero_titel": {
       "type": "string"
     },
     "konferens_sektion_2_titel": {
@@ -192,6 +198,9 @@
       ]
     },
     "aktiviteter_hero_titel": {
+      "type": "string"
+    },
+    "mobile_aktiviteter_hero_titel": {
       "type": "string"
     },
     "aktiviteter_sektion_2_titel": {
