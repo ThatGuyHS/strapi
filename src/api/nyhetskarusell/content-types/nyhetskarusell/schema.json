@@ -30,6 +30,9 @@
     "cta_link": {
       "type": "string"
     },
+    "vikt": {
+      "type": "integer"
+    },
     "isLive": {
       "type": "boolean",
       "default": false
