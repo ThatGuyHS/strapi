@@ -55,11 +55,14 @@
     "projektArtikel": {
       "type": "boolean"
     },
-    "hideFromHeroCarousel": {
+    "liveIKarusell": {
       "type": "boolean",
       "default": false
     },
     "vikt": {
+      "type": "integer"
+    },
+    "karusellVikt": {
       "type": "integer"
     },
     "sektion_1_text": {
