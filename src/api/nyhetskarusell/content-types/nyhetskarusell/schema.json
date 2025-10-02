@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nyhetskaruseller",
+  "info": {
+    "singularName": "nyhetskarusell",
+    "pluralName": "nyhetskaruseller",
+    "displayName": "Nyhetskarusell"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titel": {
+      "type": "string"
+    },
+    "hero_bild": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "kort_beskrivning": {
+      "type": "text"
+    },
+    "cta_text": {
+      "type": "string"
+    },
+    "cta_link": {
+      "type": "string"
+    },
+    "isLive": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
+
