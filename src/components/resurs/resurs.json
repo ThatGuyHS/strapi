@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_resurs_resurs",
+  "info": {
+    "displayName": "Resurs"
+  },
+  "options": {},
+  "attributes": {
+    "titel": {
+      "type": "string"
+    },
+    "beskrivning": {
+      "type": "text"
+    },
+    "lank": {
+      "type": "string"
+    }
+  }
+}
+
