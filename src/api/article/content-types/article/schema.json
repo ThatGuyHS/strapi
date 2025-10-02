@@ -55,6 +55,10 @@
     "projektArtikel": {
       "type": "boolean"
     },
+    "hideFromHeroCarousel": {
+      "type": "boolean",
+      "default": false
+    },
     "vikt": {
       "type": "integer"
     },
