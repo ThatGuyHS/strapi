@@ -134,6 +134,26 @@
         "images"
       ]
     },
+    "turnering_sektion_4b_titel": {
+      "type": "string"
+    },
+    "turnering_sektion_4b_text": {
+      "type": "blocks"
+    },
+    "turnering_sektion_4b_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "turnering_sektion_4b_cta_text": {
+      "type": "string"
+    },
+    "turnering_sektion_4b_cta_link": {
+      "type": "string"
+    },
     "konferens_headerbild": {
       "type": "media",
       "multiple": false,
