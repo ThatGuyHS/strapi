@@ -84,6 +84,24 @@
         "images"
       ]
     },
+    "card_1_title": {
+      "type": "string"
+    },
+    "card_1_text": {
+      "type": "text"
+    },
+    "card_2_title": {
+      "type": "string"
+    },
+    "card_2_text": {
+      "type": "text"
+    },
+    "card_3_title": {
+      "type": "string"
+    },
+    "card_3_text": {
+      "type": "text"
+    },
     "text_section_title": {
       "type": "string"
     },
