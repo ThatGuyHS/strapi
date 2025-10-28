@@ -345,6 +345,28 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "partner_sektion_titel": {
+      "type": "string",
+      "required": true
+    },
+    "partner_sektion_text": {
+      "type": "blocks",
+      "required": true
+    },
+    "partner_sektion_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "partner_sektion_cta_text": {
+      "type": "string"
+    },
+    "partner_sektion_cta_link": {
+      "type": "string"
     }
   }
 }
