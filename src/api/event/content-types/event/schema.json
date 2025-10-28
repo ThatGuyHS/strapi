@@ -367,11 +367,6 @@
     },
     "partner_sektion_cta_link": {
       "type": "string"
-    },
-    "coach": {
-      "type": "component",
-      "repeatable": false,
-      "component": "coach.coach"
     }
   }
 }

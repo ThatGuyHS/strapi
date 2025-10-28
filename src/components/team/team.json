@@ -45,6 +45,11 @@
       "type": "component",
       "repeatable": true,
       "component": "event-player.player"
+    },
+    "coach": {
+      "type": "component",
+      "repeatable": false,
+      "component": "coach.coach"
     }
   }
 }
