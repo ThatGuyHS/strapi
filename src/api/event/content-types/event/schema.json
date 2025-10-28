@@ -369,7 +369,9 @@
       "type": "string"
     },
     "coach": {
-      "type": "string"
+      "type": "component",
+      "repeatable": false,
+      "component": "coach.coach"
     }
   }
 }
