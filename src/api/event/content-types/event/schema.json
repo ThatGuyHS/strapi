@@ -42,13 +42,13 @@
       "type": "string"
     },
     "prize_pool_first": {
-      "type": "decimal"
+      "type": "text"
     },
     "prize_pool_second": {
-      "type": "decimal"
+      "type": "text"
     },
     "prize_pool_third": {
-      "type": "decimal"
+      "type": "text"
     },
     "headerbild": {
       "type": "media",
