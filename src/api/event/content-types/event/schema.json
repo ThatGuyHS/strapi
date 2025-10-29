@@ -41,6 +41,15 @@
     "bracket_link": {
       "type": "string"
     },
+    "prize_pool_first": {
+      "type": "decimal"
+    },
+    "prize_pool_second": {
+      "type": "decimal"
+    },
+    "prize_pool_third": {
+      "type": "decimal"
+    },
     "headerbild": {
       "type": "media",
       "multiple": false,
