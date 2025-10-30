@@ -128,6 +128,9 @@
         "audios"
       ]
     },
+    "sektion_1_bild_text": {
+      "type": "string"
+    },
     "ctasektion1left": {
       "type": "component",
       "repeatable": false,
@@ -154,6 +157,9 @@
         "videos",
         "audios"
       ]
+    },
+    "sektion_2_bild_text": {
+      "type": "string"
     },
     "ctasektion2left": {
       "type": "component",
@@ -182,6 +188,9 @@
         "audios"
       ]
     },
+    "sektion_3_bild_text": {
+      "type": "string"
+    },
     "ctasektion3left": {
       "type": "component",
       "repeatable": false,
@@ -208,6 +217,9 @@
         "videos",
         "audios"
       ]
+    },
+    "sektion_4_bild_text": {
+      "type": "string"
     },
     "ctasektion4left": {
       "type": "component",
@@ -236,6 +248,9 @@
         "audios"
       ]
     },
+    "sektion_5_bild_text": {
+      "type": "string"
+    },
     "ctasektion5left": {
       "type": "component",
       "repeatable": false,
@@ -262,6 +277,9 @@
         "videos",
         "audios"
       ]
+    },
+    "sektion_6_bild_text": {
+      "type": "string"
     },
     "ctasektion6left": {
       "type": "component",
@@ -290,6 +308,9 @@
         "audios"
       ]
     },
+    "sektion_7_bild_text": {
+      "type": "string"
+    },
     "ctasektion7left": {
       "type": "component",
       "repeatable": false,
@@ -317,6 +338,9 @@
         "audios"
       ]
     },
+    "sektion_8_bild_text": {
+      "type": "string"
+    },
     "ctasektion8left": {
       "type": "component",
       "repeatable": false,
@@ -343,6 +367,9 @@
         "videos",
         "audios"
       ]
+    },
+    "sektion_9_bild_text": {
+      "type": "string"
     },
     "ctasektion9left": {
       "type": "component",
