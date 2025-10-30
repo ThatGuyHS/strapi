@@ -29,19 +29,119 @@
         "article"
       ]
     },
+    "datum": {
+      "type": "string"
+    },
+    "huvudtext": {
+      "type": "blocks"
+    },
+    "videoembed": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    },
+    "videoembedplacering": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "sektion1",
+        "sektion2",
+        "sektion3",
+        "sektion4",
+        "sektion5",
+        "sektion6",
+        "sektion7",
+        "sektion8",
+        "sektion9"
+      ]
+    },
+    "videoembed2": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    },
+    "videoembedplacering2": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "sektion1",
+        "sektion2",
+        "sektion3",
+        "sektion4",
+        "sektion5",
+        "sektion6",
+        "sektion7",
+        "sektion8",
+        "sektion9"
+      ]
+    },
+    "videoembed3": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    },
+    "videoembedplacering3": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "sektion1",
+        "sektion2",
+        "sektion3",
+        "sektion4",
+        "sektion5",
+        "sektion6",
+        "sektion7",
+        "sektion8",
+        "sektion9"
+      ]
+    },
+    "videoembed4": {
+      "type": "customField",
+      "customField": "plugin::oembed.oembed"
+    },
+    "videoembedplacering4": {
+      "type": "enumeration",
+      "enum": [
+        "top",
+        "sektion1",
+        "sektion2",
+        "sektion3",
+        "sektion4",
+        "sektion5",
+        "sektion6",
+        "sektion7",
+        "sektion8",
+        "sektion9"
+      ]
+    },
+    "sektion_1_titel": {
+      "type": "string"
+    },
     "sektion_1_text": {
       "type": "blocks"
+    },
+    "sektion_1_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ctasektion1left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion1right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
     },
     "sektion_2_titel": {
       "type": "string"
     },
     "sektion_2_text": {
-      "type": "blocks"
-    },
-    "sektion_3_titel": {
-      "type": "string"
-    },
-    "sektion_3_text": {
       "type": "blocks"
     },
     "sektion_2_bild": {
@@ -55,6 +155,22 @@
         "audios"
       ]
     },
+    "ctasektion2left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion2right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "sektion_3_titel": {
+      "type": "string"
+    },
+    "sektion_3_text": {
+      "type": "blocks"
+    },
     "sektion_3_bild": {
       "type": "media",
       "multiple": false,
@@ -66,11 +182,18 @@
         "audios"
       ]
     },
-    "datum": {
-      "type": "string"
+    "ctasektion3left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
     },
-    "huvudtext": {
-      "type": "blocks"
+    "ctasektion3right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "sektion_4_titel": {
+      "type": "string"
     },
     "sektion_4_text": {
       "type": "blocks"
@@ -86,103 +209,6 @@
         "audios"
       ]
     },
-    "sektion_1_bild": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "videoembed": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
-    },
-    "videoembedplacering": {
-      "type": "enumeration",
-      "enum": [
-        "top",
-        "sektion1",
-        "sektion2",
-        "sektion3",
-        "sektion4"
-      ]
-    },
-    "videoembed2": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
-    },
-    "videoembedplacering2": {
-      "type": "enumeration",
-      "enum": [
-        "top",
-        "sektion1",
-        "sektion2",
-        "sektion3",
-        "sektion4"
-      ]
-    },
-    "videoembed3": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
-    },
-    "videoembedplacering3": {
-      "type": "enumeration",
-      "enum": [
-        "top",
-        "sektion1",
-        "sektion2",
-        "sektion3",
-        "sektion4"
-      ]
-    },
-    "videoembed4": {
-      "type": "customField",
-      "customField": "plugin::oembed.oembed"
-    },
-    "videoembedplacering4": {
-      "type": "enumeration",
-      "enum": [
-        "top",
-        "sektion1",
-        "sektion2",
-        "sektion3",
-        "sektion4"
-      ]
-    },
-    "ctasektion1left": {
-      "type": "component",
-      "repeatable": false,
-      "component": "cta.cta"
-    },
-    "ctasektion1right": {
-      "type": "component",
-      "repeatable": false,
-      "component": "cta.cta"
-    },
-    "ctasektion2left": {
-      "type": "component",
-      "repeatable": false,
-      "component": "cta.cta"
-    },
-    "ctasektion2right": {
-      "type": "component",
-      "repeatable": false,
-      "component": "cta.cta"
-    },
-    "ctasektion3left": {
-      "type": "component",
-      "repeatable": false,
-      "component": "cta.cta"
-    },
-    "ctasektion3right": {
-      "type": "component",
-      "repeatable": false,
-      "component": "cta.cta"
-    },
     "ctasektion4left": {
       "type": "component",
       "repeatable": false,
@@ -193,22 +219,10 @@
       "repeatable": false,
       "component": "cta.cta"
     },
-    "sektion_1_titel": {
-      "type": "string"
-    },
-    "sektion_4_titel": {
-      "type": "string"
-    },
     "sektion_5_titel": {
       "type": "string"
     },
     "sektion_5_text": {
-      "type": "blocks"
-    },
-    "sektion_6_titel": {
-      "type": "string"
-    },
-    "sektion_6_text": {
       "type": "blocks"
     },
     "sektion_5_bild": {
@@ -222,6 +236,22 @@
         "audios"
       ]
     },
+    "ctasektion5left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion5right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "sektion_6_titel": {
+      "type": "string"
+    },
+    "sektion_6_text": {
+      "type": "blocks"
+    },
     "sektion_6_bild": {
       "type": "media",
       "multiple": false,
@@ -232,6 +262,97 @@
         "videos",
         "audios"
       ]
+    },
+    "ctasektion6left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion6right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "sektion_7_titel": {
+      "type": "string"
+    },
+    "sektion_7_text": {
+      "type": "blocks"
+    },
+    "sektion_7_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ctasektion7left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion7right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "sektion_8_titel": {
+      "type": "string"
+    },
+    "sektion_8_text": {
+      "type": "blocks"
+    },
+    "sektion_8_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ctasektion8left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion8right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "sektion_9_titel": {
+      "type": "string"
+    },
+    "sektion_9_text": {
+      "type": "blocks"
+    },
+    "sektion_9_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ctasektion9left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
+    },
+    "ctasektion9right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cta.cta"
     }
   }
 }
