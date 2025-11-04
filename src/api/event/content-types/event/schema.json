@@ -376,6 +376,22 @@
     },
     "partner_sektion_cta_link": {
       "type": "string"
+    },
+    "event_sponsors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sponsorer.sponsorer"
+    },
+    "sponsorer_headerbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "sponsorer_hero_titel": {
+      "type": "string"
     }
   }
 }
