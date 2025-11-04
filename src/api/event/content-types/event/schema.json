@@ -382,6 +382,11 @@
       "relation": "manyToMany",
       "target": "api::sponsorer.sponsorer"
     },
+    "event_specific_sponsors": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sponsor.sponsor"
+    },
     "sponsorer_headerbild": {
       "type": "media",
       "multiple": false,
