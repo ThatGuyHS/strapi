@@ -29,6 +29,10 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "weight": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
