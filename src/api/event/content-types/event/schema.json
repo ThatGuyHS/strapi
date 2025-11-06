@@ -397,6 +397,20 @@
     },
     "sponsorer_hero_titel": {
       "type": "string"
+    },
+    "sponsor_section_titel": {
+      "type": "string"
+    },
+    "sponsor_section_text": {
+      "type": "blocks"
+    },
+    "sponsor_section_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
