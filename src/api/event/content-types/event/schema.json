@@ -411,6 +411,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "sponsor_section_cta_text": {
+      "type": "string"
+    },
+    "sponsor_section_cta_link": {
+      "type": "string"
     }
   }
 }
