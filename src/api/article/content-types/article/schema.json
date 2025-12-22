@@ -218,6 +218,11 @@
     },
     "sektion_6_text": {
       "type": "blocks"
+    },
+    "relatedProject": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::article.article"
     }
   }
 }
