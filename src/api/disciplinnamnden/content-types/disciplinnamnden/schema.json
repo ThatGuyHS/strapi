@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "disciplinnamdens",
+  "info": {
+    "singularName": "disciplinnamnden",
+    "pluralName": "disciplinnamdens",
+    "displayName": "/disciplinnamnden",
+    "description": "Disciplinnämnden page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titel": {
+      "type": "string"
+    },
+    "headerbild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "introText": {
+      "type": "blocks"
+    },
+    "postadress": {
+      "type": "text"
+    },
+    "epostadress": {
+      "type": "string"
+    },
+    "formularTitel": {
+      "type": "string"
+    },
+    "formularIntroText": {
+      "type": "string"
+    },
+    "stadgarTitel": {
+      "type": "string"
+    },
+    "stadgarText": {
+      "type": "blocks"
+    },
+    "processTitel": {
+      "type": "string"
+    },
+    "processText": {
+      "type": "blocks"
+    },
+    "ledamoterTitel": {
+      "type": "string"
+    },
+    "ledamoter": {
+      "type": "component",
+      "repeatable": true,
+      "component": "fortroendevald.fortroendevald"
+    }
+  }
+}
+
