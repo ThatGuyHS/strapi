@@ -218,6 +218,11 @@
     },
     "sektion_6_text": {
       "type": "blocks"
+    },
+    "relatedArticles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
     }
   }
 }
