@@ -841,7 +841,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     publiceringsmanad: Attribute.String;
     slug: Attribute.String;
     projektArtikel: Attribute.Boolean;
+    liveIKarusell: Attribute.Boolean & Attribute.DefaultTo<false>;
     vikt: Attribute.Integer;
+    karusellVikt: Attribute.Integer;
     sektion_1_text: Attribute.Blocks;
     sektion_2_text: Attribute.Blocks;
     avslutatProjekt: Attribute.Boolean;
@@ -862,6 +864,14 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     ctasektion1right: Attribute.Component<'cta.cta'>;
     ctasektion2left: Attribute.Component<'cta.cta'>;
     ctasektion2right: Attribute.Component<'cta.cta'>;
+    ctasektion3left: Attribute.Component<'cta.cta'>;
+    ctasektion3right: Attribute.Component<'cta.cta'>;
+    ctasektion4left: Attribute.Component<'cta.cta'>;
+    ctasektion4right: Attribute.Component<'cta.cta'>;
+    ctasektion5left: Attribute.Component<'cta.cta'>;
+    ctasektion5right: Attribute.Component<'cta.cta'>;
+    ctasektion6left: Attribute.Component<'cta.cta'>;
+    ctasektion6right: Attribute.Component<'cta.cta'>;
     sektion_3_text: Attribute.Blocks;
     sektion_3_bild: Attribute.Media;
     sektion_4_text: Attribute.Blocks;
@@ -878,6 +888,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     sektion_6_bild_text: Attribute.String;
     sektion_6_bild: Attribute.Media;
     sektion_6_text: Attribute.Blocks;
+    relatedArticles: Attribute.Relation<
+      'api::article.article',
+      'oneToMany',
+      'api::article.article'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -932,6 +947,50 @@ export interface ApiCalendareventCalendarevent extends Schema.CollectionType {
   };
 }
 
+export interface ApiDisciplinnamndenDisciplinnamnden
+  extends Schema.CollectionType {
+  collectionName: 'disciplinnamdens';
+  info: {
+    singularName: 'disciplinnamnden';
+    pluralName: 'disciplinnamdens';
+    displayName: '/disciplinnamnden';
+    description: 'Disciplinn\u00E4mnden page content';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    headerbild: Attribute.Media;
+    introText: Attribute.Blocks;
+    postadress: Attribute.Text;
+    epostadress: Attribute.String;
+    formularTitel: Attribute.String;
+    formularIntroText: Attribute.String;
+    stadgarTitel: Attribute.String;
+    stadgarText: Attribute.Blocks;
+    processTitel: Attribute.String;
+    processText: Attribute.Blocks;
+    ledamoterTitel: Attribute.String;
+    ledamoter: Attribute.Component<'fortroendevald.fortroendevald', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::disciplinnamnden.disciplinnamnden',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::disciplinnamnden.disciplinnamnden',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiEventEvent extends Schema.CollectionType {
   collectionName: 'events';
   info: {
@@ -952,28 +1011,99 @@ export interface ApiEventEvent extends Schema.CollectionType {
     end_date: Attribute.Date & Attribute.Required;
     tournament_info: Attribute.Blocks;
     bracket_link: Attribute.String;
+    prize_pool_first: Attribute.Text;
+    prize_pool_second: Attribute.Text;
+    prize_pool_third: Attribute.Text;
     headerbild: Attribute.Media;
     hero_logo: Attribute.Media;
     card_1_bild: Attribute.Media;
     card_2_bild: Attribute.Media;
     card_3_bild: Attribute.Media;
+    card_1_title: Attribute.String;
+    card_1_text: Attribute.Text;
+    card_2_title: Attribute.String;
+    card_2_text: Attribute.Text;
+    card_3_title: Attribute.String;
+    card_3_text: Attribute.Text;
     text_section_title: Attribute.String;
     text_section_content: Attribute.Blocks;
     sponsorer: Attribute.Media;
     turnering_hero_bild: Attribute.Media;
+    turnering_hero_titel: Attribute.String;
+    mobile_turnering_hero_titel: Attribute.String;
     turnering_sektion_2_bild: Attribute.Media;
+    turnering_sektion_4_titel: Attribute.String;
+    turnering_sektion_4_text: Attribute.Blocks;
+    turnering_sektion_4_bild: Attribute.Media;
+    turnering_sektion_4b_titel: Attribute.String;
+    turnering_sektion_4b_text: Attribute.Blocks;
+    turnering_sektion_4b_bild: Attribute.Media;
+    turnering_sektion_4b_cta_text: Attribute.String;
+    turnering_sektion_4b_cta_link: Attribute.String;
     konferens_headerbild: Attribute.Media;
+    konferens_hero_titel: Attribute.String;
+    mobile_konferens_hero_titel: Attribute.String;
     konferens_sektion_2_titel: Attribute.String;
     konferens_sektion_2_text: Attribute.Blocks;
     konferens_sektion_2_bild: Attribute.Media;
     turnering_titel: Attribute.String;
+    turnering_schema_titel: Attribute.String;
+    turnering_lag_titel: Attribute.String;
+    turnering_partners_titel: Attribute.String;
     turnering_beskrivning: Attribute.Blocks;
+    turnering_cta_text: Attribute.Blocks;
+    turnering_cta_link: Attribute.String;
+    aktitiveter_hero_bild: Attribute.Media;
+    aktiviteter_hero_titel: Attribute.String;
+    mobile_aktiviteter_hero_titel: Attribute.String;
+    aktiviteter_sektion_2_titel: Attribute.String;
+    aktiviteter_sektion_2_text: Attribute.Blocks;
+    aktiviteter_sektion_2_bild: Attribute.Media;
+    aktiviteter_introduktion_titel: Attribute.String;
+    aktiviteter_introduktion_text: Attribute.Blocks;
+    aktiviteter_cta_titel: Attribute.String;
+    aktiviteter_cta_text: Attribute.Blocks;
+    aktiviteter_cta_knapp_text: Attribute.String;
+    aktiviteter_cta_knapp_url: Attribute.String;
     exhibitors: Attribute.Component<'exhibitor.exhibitor', true>;
     konferens_forum: Attribute.Component<'exhibitor.exhibitor', true>;
     teams: Attribute.Component<'team.team', true>;
     schedule_items: Attribute.Component<'schedule-item.schedule-item', true>;
+    konferens_schedule_items: Attribute.Component<
+      'schedule-item.schedule-item',
+      true
+    >;
+    konferens_schema_titel: Attribute.String;
+    konferens_forum_titel: Attribute.String;
+    konferens_partners_titel: Attribute.String;
+    praktiskinfo1_titel: Attribute.String;
+    praktiskinfo1_text: Attribute.Blocks;
+    praktiskinfo2_titel: Attribute.String;
+    praktiskinfo2_text: Attribute.Blocks;
+    praktiskinfo3_titel: Attribute.String;
+    praktiskinfo3_text: Attribute.Blocks;
+    praktiskinfo4_titel: Attribute.String;
+    praktiskinfo4_text: Attribute.Blocks;
     brackets: Attribute.Component<'bracket-info.bracket-info', true>;
     sektion_2_bild: Attribute.Media;
+    partner_sektion_titel: Attribute.String & Attribute.Required;
+    partner_sektion_text: Attribute.Blocks & Attribute.Required;
+    partner_sektion_bild: Attribute.Media;
+    partner_sektion_cta_text: Attribute.String;
+    partner_sektion_cta_link: Attribute.String;
+    event_sponsors: Attribute.Relation<
+      'api::event.event',
+      'manyToMany',
+      'api::sponsorer.sponsorer'
+    >;
+    event_specific_sponsors: Attribute.Component<'sponsor.sponsor', true>;
+    sponsorer_headerbild: Attribute.Media;
+    sponsorer_hero_titel: Attribute.String;
+    sponsor_section_titel: Attribute.String;
+    sponsor_section_text: Attribute.Blocks;
+    sponsor_section_bild: Attribute.Media;
+    sponsor_section_cta_text: Attribute.String;
+    sponsor_section_cta_link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1412,6 +1542,42 @@ export interface ApiNordiskamasterskapenEnNordiskamasterskapenEn
   };
 }
 
+export interface ApiNyhetskarusellNyhetskarusell extends Schema.CollectionType {
+  collectionName: 'nyhetskaruseller';
+  info: {
+    singularName: 'nyhetskarusell';
+    pluralName: 'nyhetskaruseller';
+    displayName: 'Nyhetskarusell';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    hero_bild: Attribute.Media;
+    kort_beskrivning: Attribute.Text;
+    cta_text: Attribute.String;
+    cta_link: Attribute.String;
+    vikt: Attribute.Integer;
+    isLive: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::nyhetskarusell.nyhetskarusell',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::nyhetskarusell.nyhetskarusell',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPlayerPlayer extends Schema.CollectionType {
   collectionName: 'players';
   info: {
@@ -1452,6 +1618,39 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
   };
 }
 
+export interface ApiResurserResurser extends Schema.SingleType {
+  collectionName: 'resursers';
+  info: {
+    singularName: 'resurser';
+    pluralName: 'resursers';
+    displayName: 'Resurser';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titel: Attribute.String;
+    introtext: Attribute.Text;
+    headerbild: Attribute.Media;
+    resurser: Attribute.Component<'resurs.resurs', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::resurser.resurser',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::resurser.resurser',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSidaSida extends Schema.CollectionType {
   collectionName: 'sidas';
   info: {
@@ -1475,53 +1674,125 @@ export interface ApiSidaSida extends Schema.CollectionType {
         'article'
       ]
     >;
-    sektion_1_text: Attribute.Blocks;
-    sektion_2_titel: Attribute.String;
-    sektion_2_text: Attribute.Blocks;
-    sektion_3_titel: Attribute.String;
-    sektion_3_text: Attribute.Blocks;
-    sektion_2_bild: Attribute.Media;
-    sektion_3_bild: Attribute.Media;
     datum: Attribute.String;
     huvudtext: Attribute.Blocks;
-    sektion_4_text: Attribute.Blocks;
-    sektion_4_bild: Attribute.Media;
-    sektion_1_bild: Attribute.Media;
     videoembed: Attribute.Text & Attribute.CustomField<'plugin::oembed.oembed'>;
     videoembedplacering: Attribute.Enumeration<
-      ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
+      [
+        'top',
+        'sektion1',
+        'sektion2',
+        'sektion3',
+        'sektion4',
+        'sektion5',
+        'sektion6',
+        'sektion7',
+        'sektion8',
+        'sektion9'
+      ]
     >;
     videoembed2: Attribute.Text &
       Attribute.CustomField<'plugin::oembed.oembed'>;
     videoembedplacering2: Attribute.Enumeration<
-      ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
+      [
+        'top',
+        'sektion1',
+        'sektion2',
+        'sektion3',
+        'sektion4',
+        'sektion5',
+        'sektion6',
+        'sektion7',
+        'sektion8',
+        'sektion9'
+      ]
     >;
     videoembed3: Attribute.Text &
       Attribute.CustomField<'plugin::oembed.oembed'>;
     videoembedplacering3: Attribute.Enumeration<
-      ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
+      [
+        'top',
+        'sektion1',
+        'sektion2',
+        'sektion3',
+        'sektion4',
+        'sektion5',
+        'sektion6',
+        'sektion7',
+        'sektion8',
+        'sektion9'
+      ]
     >;
     videoembed4: Attribute.Text &
       Attribute.CustomField<'plugin::oembed.oembed'>;
     videoembedplacering4: Attribute.Enumeration<
-      ['top', 'sektion1', 'sektion2', 'sektion3', 'sektion4']
+      [
+        'top',
+        'sektion1',
+        'sektion2',
+        'sektion3',
+        'sektion4',
+        'sektion5',
+        'sektion6',
+        'sektion7',
+        'sektion8',
+        'sektion9'
+      ]
     >;
+    sektion_1_titel: Attribute.String;
+    sektion_1_text: Attribute.Blocks;
+    sektion_1_bild: Attribute.Media;
+    sektion_1_bild_text: Attribute.String;
     ctasektion1left: Attribute.Component<'cta.cta'>;
     ctasektion1right: Attribute.Component<'cta.cta'>;
+    sektion_2_titel: Attribute.String;
+    sektion_2_text: Attribute.Blocks;
+    sektion_2_bild: Attribute.Media;
+    sektion_2_bild_text: Attribute.String;
     ctasektion2left: Attribute.Component<'cta.cta'>;
     ctasektion2right: Attribute.Component<'cta.cta'>;
+    sektion_3_titel: Attribute.String;
+    sektion_3_text: Attribute.Blocks;
+    sektion_3_bild: Attribute.Media;
+    sektion_3_bild_text: Attribute.String;
     ctasektion3left: Attribute.Component<'cta.cta'>;
     ctasektion3right: Attribute.Component<'cta.cta'>;
+    sektion_4_titel: Attribute.String;
+    sektion_4_text: Attribute.Blocks;
+    sektion_4_bild: Attribute.Media;
+    sektion_4_bild_text: Attribute.String;
     ctasektion4left: Attribute.Component<'cta.cta'>;
     ctasektion4right: Attribute.Component<'cta.cta'>;
-    sektion_1_titel: Attribute.String;
-    sektion_4_titel: Attribute.String;
     sektion_5_titel: Attribute.String;
     sektion_5_text: Attribute.Blocks;
+    sektion_5_bild: Attribute.Media;
+    sektion_5_bild_text: Attribute.String;
+    ctasektion5left: Attribute.Component<'cta.cta'>;
+    ctasektion5right: Attribute.Component<'cta.cta'>;
     sektion_6_titel: Attribute.String;
     sektion_6_text: Attribute.Blocks;
-    sektion_5_bild: Attribute.Media;
     sektion_6_bild: Attribute.Media;
+    sektion_6_bild_text: Attribute.String;
+    ctasektion6left: Attribute.Component<'cta.cta'>;
+    ctasektion6right: Attribute.Component<'cta.cta'>;
+    sektion_7_titel: Attribute.String;
+    sektion_7_text: Attribute.Blocks;
+    sektion_7_bild: Attribute.Media;
+    sektion_7_bild_text: Attribute.String;
+    ctasektion7left: Attribute.Component<'cta.cta'>;
+    ctasektion7right: Attribute.Component<'cta.cta'>;
+    sektion_8_titel: Attribute.String;
+    sektion_8_text: Attribute.Blocks;
+    sektion_8_bild: Attribute.Media;
+    sektion_8_bild_text: Attribute.String;
+    ctasektion8left: Attribute.Component<'cta.cta'>;
+    ctasektion8right: Attribute.Component<'cta.cta'>;
+    sektion_9_titel: Attribute.String;
+    sektion_9_text: Attribute.Blocks;
+    sektion_9_bild: Attribute.Media;
+    sektion_9_bild_text: Attribute.String;
+    ctasektion9left: Attribute.Component<'cta.cta'>;
+    ctasektion9right: Attribute.Component<'cta.cta'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1547,6 +1818,7 @@ export interface ApiSponsorerSponsorer extends Schema.CollectionType {
     beskrivning: Attribute.Blocks;
     webbsidelank: Attribute.String;
     bild: Attribute.Media;
+    weight: Attribute.Integer & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1696,6 +1968,7 @@ declare module '@strapi/types' {
       'api::arshjul.arshjul': ApiArshjulArshjul;
       'api::article.article': ApiArticleArticle;
       'api::calendarevent.calendarevent': ApiCalendareventCalendarevent;
+      'api::disciplinnamnden.disciplinnamnden': ApiDisciplinnamndenDisciplinnamnden;
       'api::event.event': ApiEventEvent;
       'api::forbundetinfo.forbundetinfo': ApiForbundetinfoForbundetinfo;
       'api::forening.forening': ApiForeningForening;
@@ -1707,7 +1980,9 @@ declare module '@strapi/types' {
       'api::navbar-item.navbar-item': ApiNavbarItemNavbarItem;
       'api::nordiskamasterskapen.nordiskamasterskapen': ApiNordiskamasterskapenNordiskamasterskapen;
       'api::nordiskamasterskapen-en.nordiskamasterskapen-en': ApiNordiskamasterskapenEnNordiskamasterskapenEn;
+      'api::nyhetskarusell.nyhetskarusell': ApiNyhetskarusellNyhetskarusell;
       'api::player.player': ApiPlayerPlayer;
+      'api::resurser.resurser': ApiResurserResurser;
       'api::sida.sida': ApiSidaSida;
       'api::sponsorer.sponsorer': ApiSponsorerSponsorer;
       'api::tjanster.tjanster': ApiTjansterTjanster;

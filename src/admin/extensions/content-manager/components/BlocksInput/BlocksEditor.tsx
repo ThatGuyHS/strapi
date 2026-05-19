@@ -75,6 +75,44 @@ const modifiers = {
   },
 };
 
+// Normalize editor to remove invalid images before any operations
+const withImageNormalization = (editor: Editor) => {
+  const { normalizeNode, apply } = editor;
+  
+  // Override normalizeNode to remove invalid images
+  editor.normalizeNode = (entry) => {
+    const [node, path] = entry;
+    
+    // If it's an image element without a valid url, remove it
+    if (Element.isElement(node) && node.type === 'image') {
+      if (!node.url || typeof node.url !== 'string' || node.url.trim() === '') {
+        console.warn('Removing invalid image node at path:', path);
+        Transforms.removeNodes(editor, { at: path });
+        return;
+      }
+    }
+    
+    // Recursively check children
+    if (node.children && Array.isArray(node.children)) {
+      for (let i = node.children.length - 1; i >= 0; i--) {
+        const child = node.children[i];
+        if (Element.isElement(child) && child.type === 'image') {
+          if (!child.url || typeof child.url !== 'string' || child.url.trim() === '') {
+            console.warn('Removing invalid image child at path:', [...path, i]);
+            Transforms.removeNodes(editor, { at: [...path, i] });
+            return;
+          }
+        }
+      }
+    }
+    
+    // Call original normalizeNode
+    normalizeNode(entry);
+  };
+  
+  return editor;
+};
+
 // Simplified withImages and withStrapiSchema
 const withImages = (editor: Editor) => editor;
 const withStrapiSchema = (editor: Editor) => editor;
@@ -120,6 +158,7 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
     const [editor] = React.useState(() =>
       pipe(
         withHistory,
+        withImageNormalization,
         withImages,
         withStrapiSchema,
         withReact,
@@ -134,6 +173,53 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
 
     // Attach setLiveText to editor for use in plugins
     (editor as any).setLiveText = setLiveText;
+
+    // Function to clean the editor content (defined early so it can be used in effects)
+    const cleanEditorContent = React.useCallback((content: Descendant[]): Descendant[] => {
+      // Helper function to check if text contains drag-related content
+      const containsDragText = (text: string): boolean => {
+        return text.match(/drag/i) !== null || text.match(/dr+a+g+/i) !== null;
+      };
+      
+      // Helper function to clean text
+      const cleanText = (text: string): string => {
+        return text.replace(/drag/gi, '').replace(/dr+a+g+/gi, '');
+      };
+      
+      // Recursively clean the content
+      const cleanNode = (node: any): any => {
+        // If it's a text node
+        if (node.text !== undefined) {
+          if (containsDragText(node.text)) {
+            return { ...node, text: cleanText(node.text) };
+          }
+          return node;
+        }
+        
+        // If it's an image element, ensure it has a valid url property
+        if (Element.isElement(node) && node.type === 'image') {
+          // If image doesn't have url or url is invalid, remove it
+          if (!node.url || typeof node.url !== 'string' || node.url.trim() === '') {
+            return null; // Remove invalid image
+          }
+          return node;
+        }
+        
+        // If it's an element node with children
+        if (node.children) {
+          const cleanedChildren = node.children.map(cleanNode).filter((child: any) => child !== null);
+          return {
+            ...node,
+            children: cleanedChildren
+          };
+        }
+        
+        return node;
+      };
+      
+      // Clean each node in the content and filter out null values
+      return content.map(cleanNode).filter((node: any) => node !== null);
+    }, []);
 
     // DIRECT DOM MANIPULATION: Add a global copy event listener
     React.useEffect(() => {
@@ -290,75 +376,82 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
       return undefined;
     }, [editor]);
 
-    const handleChange = (newValue: Descendant[]) => {
-      // Check for and remove any drag text in the editor content
-      const cleanedValue = cleanEditorContent(newValue);
-      
-      // Handle copy/paste of blocks
-      if (
-        editor.operations.some((op) => op.type === 'insert_node' && Element.isElement(op.node)) ||
-        editor.operations.some((op) => op.type === 'remove_node' && Element.isElement(op.node))
-      ) {
-        onChange(cleanedValue);
-        // Clear any potential drag text after paste operations
-        setTimeout(() => {
-          setLiveText('');
-        }, 100);
-      }
-
-      // Handle text changes
-      if (
-        editor.operations.some((op) => op.type === 'insert_text') ||
-        editor.operations.some((op) => op.type === 'remove_text')
-      ) {
-        onChange(cleanedValue);
-        // Also clear liveText after text changes
-        setTimeout(() => {
-          setLiveText('');
-        }, 100);
-      }
-
-      // Handle changes in node properties
-      if (editor.operations.some((op) => op.type === 'set_node')) {
-        onChange(cleanedValue);
-      }
-    };
-    
-    // Function to clean the editor content
-    const cleanEditorContent = (content: Descendant[]): Descendant[] => {
-      // Helper function to check if text contains drag-related content
-      const containsDragText = (text: string): boolean => {
-        return text.match(/drag/i) !== null || text.match(/dr+a+g+/i) !== null;
-      };
-      
-      // Helper function to clean text
-      const cleanText = (text: string): string => {
-        return text.replace(/drag/gi, '').replace(/dr+a+g+/gi, '');
-      };
-      
-      // Recursively clean the content
-      const cleanNode = (node: any): any => {
-        // If it's a text node
-        if (node.text !== undefined) {
-          if (containsDragText(node.text)) {
-            return { ...node, text: cleanText(node.text) };
-          }
-          return node;
-        }
+    // Critical: Clean editor content immediately after mount to prevent rendering invalid images
+    React.useEffect(() => {
+      // Run normalization immediately to remove any invalid images
+      try {
+        const editorValue = editor.children as Descendant[];
+        const cleaned = cleanEditorContent(editorValue);
         
-        // If it's an element node with children
-        if (node.children) {
+        // If content was cleaned, update editor synchronously
+        if (JSON.stringify(editorValue) !== JSON.stringify(cleaned)) {
+          // Use Transforms to safely replace content
+          editor.children = cleaned;
+          // Trigger a normalization pass
+          Editor.normalize(editor, { force: true });
+        }
+      } catch (error) {
+        console.error('Error cleaning editor on mount:', error);
+      }
+    }, [editor, cleanEditorContent]);
+
+    const handleChange = (newValue: Descendant[]) => {
+      // Always clean and validate content before passing to onChange
+      // This ensures invalid images are removed immediately
+      let cleanedValue = cleanEditorContent(newValue);
+      
+      // Additional safety check: ensure no image elements without url exist
+      cleanedValue = cleanedValue.map((node: any) => {
+        if (Element.isElement(node) && node.type === 'image') {
+          // Double-check: if image doesn't have url, convert to paragraph
+          if (!node.url || typeof node.url !== 'string' || node.url.trim() === '') {
+            console.warn('Removing invalid image element:', node);
+            return { type: 'paragraph', children: [{ text: '' }] };
+          }
+        }
+        // Recursively check children
+        if (node.children && Array.isArray(node.children)) {
           return {
             ...node,
-            children: node.children.map(cleanNode)
+            children: node.children.map((child: any) => {
+              if (Element.isElement(child) && child.type === 'image') {
+                if (!child.url || typeof child.url !== 'string' || child.url.trim() === '') {
+                  console.warn('Removing invalid image from children:', child);
+                  return { text: '' };
+                }
+              }
+              return child;
+            }).filter((child: any) => {
+              // Remove any null or invalid children
+              if (child === null) return false;
+              if (Element.isElement(child) && child.type === 'image' && (!child.url || typeof child.url !== 'string')) {
+                return false;
+              }
+              return true;
+            })
           };
         }
-        
         return node;
-      };
+      }).filter((node: any) => {
+        // Final filter: remove any remaining invalid images
+        if (Element.isElement(node) && node.type === 'image') {
+          return node.url && typeof node.url === 'string' && node.url.trim() !== '';
+        }
+        return node !== null;
+      });
       
-      // Clean each node in the content
-      return content.map(cleanNode);
+      // Only call onChange if we have valid content
+      if (cleanedValue && cleanedValue.length > 0) {
+        onChange(cleanedValue);
+      } else {
+        // If all content was invalid, set to empty paragraph
+        onChange([{ type: 'paragraph', children: [{ text: '' }] }]);
+      }
+      
+      // Clear any potential drag text after operations
+      setTimeout(() => {
+        setLiveText('');
+      }, 100);
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -449,6 +542,38 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
       },
     }));
 
+    // Normalize initial value to remove any invalid images
+    // This is critical - invalid images must be removed before React renders
+    const normalizedInitialValue = React.useMemo(() => {
+      const cleaned = cleanEditorContent(value);
+      // Additional pass: recursively remove any image without url
+      const deepClean = (nodes: Descendant[]): Descendant[] => {
+        return nodes.map((node: any) => {
+          // If it's an image without url, replace with empty paragraph
+          if (Element.isElement(node) && node.type === 'image') {
+            if (!node.url || typeof node.url !== 'string' || node.url.trim() === '') {
+              return { type: 'paragraph', children: [{ text: '' }] };
+            }
+          }
+          // Recursively clean children
+          if (node.children && Array.isArray(node.children)) {
+            return {
+              ...node,
+              children: deepClean(node.children)
+            };
+          }
+          return node;
+        }).filter((node: any) => {
+          // Final safety check
+          if (Element.isElement(node) && node.type === 'image') {
+            return node.url && typeof node.url === 'string' && node.url.trim() !== '';
+          }
+          return node !== null && node !== undefined;
+        });
+      };
+      return deepClean(cleaned);
+    }, [value, cleanEditorContent]);
+
     return (
       <EditorLayout
         error={error}
@@ -456,7 +581,7 @@ const BlocksEditor = React.forwardRef<{ focus: () => void }, BlocksEditorProps>(
         disabled={disabled}
         ariaDescriptionId={ariaDescriptionId}
       >
-        <Slate editor={editor} initialValue={value} onChange={handleChange}>
+        <Slate editor={editor} initialValue={normalizedInitialValue} onChange={handleChange}>
           <BlocksToolbar />
           <Box padding={2} background="neutral0" hasRadius>
             <BlocksContent

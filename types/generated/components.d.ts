@@ -27,6 +27,19 @@ export interface BracketInfoBracketInfo extends Schema.Component {
   };
 }
 
+export interface CoachCoach extends Schema.Component {
+  collectionName: 'components_coach_coaches';
+  info: {
+    displayName: 'coach';
+    description: '';
+  };
+  attributes: {
+    fornamn: Attribute.String;
+    smeknamn: Attribute.String;
+    efternamn: Attribute.String;
+  };
+}
+
 export interface CtaCta extends Schema.Component {
   collectionName: 'components_cta_ctas';
   info: {
@@ -193,6 +206,18 @@ export interface PlayersPlayer extends Schema.Component {
   };
 }
 
+export interface ResursResurs extends Schema.Component {
+  collectionName: 'components_resurs_resurs';
+  info: {
+    displayName: 'Resurs';
+  };
+  attributes: {
+    titel: Attribute.String;
+    beskrivning: Attribute.Text;
+    lank: Attribute.String;
+  };
+}
+
 export interface ScheduleItemScheduleItem extends Schema.Component {
   collectionName: 'components_schedule_item_schedule_items';
   info: {
@@ -290,6 +315,20 @@ export interface SocialMediaSocialMedia extends Schema.Component {
   };
 }
 
+export interface SponsorSponsor extends Schema.Component {
+  collectionName: 'components_sponsor_sponsors';
+  info: {
+    displayName: 'sponsor';
+    description: 'Sponsor component for event-specific sponsors';
+  };
+  attributes: {
+    namn: Attribute.String & Attribute.Required;
+    beskrivning: Attribute.Blocks;
+    webbsidelank: Attribute.String;
+    bild: Attribute.Media;
+  };
+}
+
 export interface StadgarStadgar extends Schema.Component {
   collectionName: 'components_stadgar_stadgars';
   info: {
@@ -318,6 +357,7 @@ export interface TeamTeam extends Schema.Component {
     website: Attribute.String;
     social_media: Attribute.Component<'social-media.social-media'>;
     players: Attribute.Component<'event-player.player', true>;
+    coach: Attribute.Component<'coach.coach'>;
   };
 }
 
@@ -347,6 +387,7 @@ declare module '@strapi/types' {
     export interface Components {
       'annat.annat': AnnatAnnat;
       'bracket-info.bracket-info': BracketInfoBracketInfo;
+      'coach.coach': CoachCoach;
       'cta.cta': CtaCta;
       'dropdown-item.navigation': DropdownItemNavigation;
       'event-player.player': EventPlayerPlayer;
@@ -359,6 +400,7 @@ declare module '@strapi/types' {
       'mainbild.mainbild': MainbildMainbild;
       'navigation.navigation': NavigationNavigation;
       'players.player': PlayersPlayer;
+      'resurs.resurs': ResursResurs;
       'schedule-item.schedule-item': ScheduleItemScheduleItem;
       'sektion-2-text.sektion-2-text': Sektion2TextSektion2Text;
       'sektion-3-bild.sektion-3-bild': Sektion3BildSektion3Bild;
@@ -368,6 +410,7 @@ declare module '@strapi/types' {
       'sektionstext.sektion-2-text': SektionstextSektion2Text;
       'sektionstext.sektionstext': SektionstextSektionstext;
       'social-media.social-media': SocialMediaSocialMedia;
+      'sponsor.sponsor': SponsorSponsor;
       'stadgar.stadgar': StadgarStadgar;
       'team.team': TeamTeam;
       'titel.titel': TitelTitel;

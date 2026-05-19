@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "disciplinnamdens",
+  "collectionName": "disciplinnamndens",
   "info": {
     "singularName": "disciplinnamnden",
-    "pluralName": "disciplinnamdens",
+    "pluralName": "disciplinnamndens",
     "displayName": "/disciplinnamnden",
     "description": "Disciplinnämnden page content"
   },
