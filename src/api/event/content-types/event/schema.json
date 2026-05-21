@@ -24,6 +24,12 @@
     "description": {
       "type": "blocks"
     },
+    "startsida_sektion_1_titel": {
+      "type": "text"
+    },
+    "startsida_sektion_1_text": {
+      "type": "blocks"
+    },
     "location": {
       "type": "string"
     },
