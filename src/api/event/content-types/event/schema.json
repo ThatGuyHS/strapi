@@ -50,6 +50,9 @@
     "bracket_link": {
       "type": "string"
     },
+    "maps_link": {
+      "type": "text"
+    },
     "prize_pool_first": {
       "type": "text"
     },
