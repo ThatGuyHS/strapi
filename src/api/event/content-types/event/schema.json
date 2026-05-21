@@ -27,6 +27,9 @@
     "location": {
       "type": "string"
     },
+    "venue": {
+      "type": "string"
+    },
     "start_date": {
       "type": "date",
       "required": true

@@ -1007,6 +1007,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
     description: Attribute.Blocks;
     location: Attribute.String;
+    venue: Attribute.String;
     start_date: Attribute.Date & Attribute.Required;
     end_date: Attribute.Date & Attribute.Required;
     tournament_info: Attribute.Blocks;
