@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_event_tab_items",
+  "info": {
+    "displayName": "tab-item",
+    "description": "Tab configuration for event pages"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "text",
+      "required": true
+    },
+    "slug": {
+      "type": "text"
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "home",
+        "turnering",
+        "aktiviteter",
+        "konferens",
+        "sponsorer",
+        "custom"
+      ],
+      "required": true
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": [
+        "home",
+        "turnering",
+        "aktiviteter",
+        "konferens",
+        "sponsorer"
+      ]
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "sortOrder": {
+      "type": "integer"
+    }
+  }
+}

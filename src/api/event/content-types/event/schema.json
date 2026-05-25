@@ -319,6 +319,11 @@
       "repeatable": true,
       "component": "schedule-item.schedule-item"
     },
+    "event_tabs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "event.tab-item"
+    },
     "konferens_schema_titel": {
       "type": "string"
     },
