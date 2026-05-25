@@ -62,6 +62,9 @@
     "prize_pool_third": {
       "type": "text"
     },
+    "hideprizepool": {
+      "type": "boolean"
+    },
     "headerbild": {
       "type": "media",
       "multiple": false,
