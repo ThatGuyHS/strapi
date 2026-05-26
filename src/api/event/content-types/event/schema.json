@@ -245,8 +245,17 @@
     "turnering_beskrivning": {
       "type": "blocks"
     },
+    "turnering_cta_titel": {
+      "type": "string"
+    },
     "turnering_cta_text": {
       "type": "blocks"
+    },
+    "turnering_cta_knapp_text": {
+      "type": "string"
+    },
+    "turnering_cta_knapp_url": {
+      "type": "string"
     },
     "turnering_cta_link": {
       "type": "string"
