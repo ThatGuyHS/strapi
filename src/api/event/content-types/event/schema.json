@@ -422,6 +422,9 @@
     "konferens_partners_titel": {
       "type": "string"
     },
+    "praktiskinformationtext": {
+      "type": "blocks"
+    },
     "praktiskinfo1_titel": {
       "type": "string"
     },
