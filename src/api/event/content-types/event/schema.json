@@ -123,6 +123,9 @@
     "card_1_text": {
       "type": "text"
     },
+    "card_1_link": {
+      "type": "string"
+    },
     "card_1_position": {
       "type": "enumeration",
       "enum": [
@@ -137,6 +140,9 @@
     "card_2_text": {
       "type": "text"
     },
+    "card_2_link": {
+      "type": "string"
+    },
     "card_2_position": {
       "type": "enumeration",
       "enum": [
@@ -150,6 +156,9 @@
     },
     "card_3_text": {
       "type": "text"
+    },
+    "card_3_link": {
+      "type": "string"
     },
     "card_3_position": {
       "type": "enumeration",
@@ -173,6 +182,9 @@
     "card_4_text": {
       "type": "text"
     },
+    "card_4_link": {
+      "type": "string"
+    },
     "card_4_position": {
       "type": "enumeration",
       "enum": [
@@ -194,6 +206,9 @@
     },
     "card_5_text": {
       "type": "text"
+    },
+    "card_5_link": {
+      "type": "string"
     },
     "card_5_position": {
       "type": "enumeration",
