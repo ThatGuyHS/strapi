@@ -413,6 +413,9 @@
       "repeatable": true,
       "component": "event.tab-item"
     },
+    "hidetabs": {
+      "type": "boolean"
+    },
     "konferens_schema_titel": {
       "type": "string"
     },
