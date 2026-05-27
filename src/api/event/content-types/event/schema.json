@@ -120,17 +120,85 @@
     "card_1_text": {
       "type": "text"
     },
+    "card_1_position": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "top"
+      ],
+      "default": "default"
+    },
     "card_2_title": {
       "type": "string"
     },
     "card_2_text": {
       "type": "text"
     },
+    "card_2_position": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "top"
+      ],
+      "default": "default"
+    },
     "card_3_title": {
       "type": "string"
     },
     "card_3_text": {
       "type": "text"
+    },
+    "card_3_position": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "top"
+      ],
+      "default": "default"
+    },
+    "card_4_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "card_4_title": {
+      "type": "string"
+    },
+    "card_4_text": {
+      "type": "text"
+    },
+    "card_4_position": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "top"
+      ],
+      "default": "default"
+    },
+    "card_5_bild": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "card_5_title": {
+      "type": "string"
+    },
+    "card_5_text": {
+      "type": "text"
+    },
+    "card_5_position": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "top"
+      ],
+      "default": "default"
     },
     "text_section_title": {
       "type": "string"
