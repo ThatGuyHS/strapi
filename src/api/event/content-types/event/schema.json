@@ -84,6 +84,12 @@
         "images"
       ]
     },
+    "hero_logo_scale": {
+      "type": "decimal"
+    },
+    "hero_logo_max_width": {
+      "type": "string"
+    },
     "card_1_bild": {
       "type": "media",
       "multiple": false,
