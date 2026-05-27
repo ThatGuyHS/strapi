@@ -53,6 +53,9 @@
     "maps_link": {
       "type": "text"
     },
+    "hidemap": {
+      "type": "boolean"
+    },
     "prize_pool_first": {
       "type": "text"
     },
