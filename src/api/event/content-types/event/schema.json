@@ -346,6 +346,9 @@
     "turnering_cta_knapp_text": {
       "type": "string"
     },
+    "turnering_inline_cta_label": {
+      "type": "string"
+    },
     "turnering_cta_knapp_url": {
       "type": "string"
     },
