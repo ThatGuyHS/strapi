@@ -434,6 +434,9 @@
     "hidetabs": {
       "type": "boolean"
     },
+    "showquestionmark": {
+      "type": "boolean"
+    },
     "konferens_schema_titel": {
       "type": "string"
     },
